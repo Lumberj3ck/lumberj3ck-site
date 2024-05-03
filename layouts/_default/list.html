@@ -1,0 +1,43 @@
+{{ define "title" }}
+<title>Lumberj3ck blog</title>
+{{ end }} 
+{{ define "main" }}
+<div class="container-reset container ">
+<div class="home">
+  <div class="content">
+  {{ range where .Site.RegularPages "Section" "posts" }}
+  <br/>
+  <h2>
+  <a href="{{ .RelPermalink }}" class="link">{{ .Title }}</a>
+  </h2>
+    <div class="dateTime">
+    <strong>Published</strong>
+    <time>{{ .Date.Format (default "2006-01-02" .Site.Params.dateFmt) }}</time >
+    </div>
+  <div>
+  {{ .Summary }} 
+    </div>
+  {{ if .Truncated }}
+  <a href="{{ .RelPermalink }}">Read more...</a>
+  {{ end }}
+  <br />
+  {{ end }}
+  </div>
+    <div class="sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://rakyll.org/" class="link"><h1>lumberj3ck.org</h1></a>
+      <p class="lead">
+      Notes on what I am currently working on.
+      </p>
+    </div>
+    <ul class="sidebar-nav">
+      <li><a href="/" class="link">Home</a> </li>
+      <li><a href="/archive/" class="link">Archive</a></li>
+      <li><a href="/about/" class="link">About</a></li>
+      <li><a rel="me" href="https://github.com/Lumberj3ck/" class="link">GitHub</a></li>
+    </ul>
+    <div>This blog is served by <strong><a href="https://gohugo.io/" class="link">Hugo</a></strong></div>
+  </div>
+</div>
+</div>
+{{ end }}

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Lumberj3ck website</title>
+    <link>http://localhost:1313/posts/</link>
+    <description>Recent content in Posts on Lumberj3ck website</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 02 May 2024 11:36:52 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Another post</title>
+      <link>http://localhost:1313/posts/my-first-post-copy-3/</link>
+      <pubDate>Thu, 02 May 2024 11:36:52 +0200</pubDate>
+      <guid>http://localhost:1313/posts/my-first-post-copy-3/</guid>
+      <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lobortis diam sit amet enim commodo ornare. Vivamus eu ante in arcu maximus gravida eu nec diam. Proin et ex vestibulum, ullamcorper justo id, lobortis justo. Aliquam suscipit viverra urna ac finibus. Maecenas ut ultrices sem. Donec luctus arcu sed ipsum molestie, at porttitor orci blandit. Quisque et mauris volutpat, vestibulum lectus tempus, elementum quam. Quisque cursus nunc hendrerit mauris convallis, nec placerat libero scelerisque.</description>
+    </item>
+    <item>
+      <title>New post</title>
+      <link>http://localhost:1313/posts/my-first-post/</link>
+      <pubDate>Thu, 02 May 2024 11:36:52 +0200</pubDate>
+      <guid>http://localhost:1313/posts/my-first-post/</guid>
+      <description>This tutorial is written for anyone who is new to Go. In it we&amp;rsquo;ll explain what packages, import statements and modules are in Go, how they work and relate to each other and — hopefully — clear up any questions that you have. We&amp;rsquo;ll start at a high level, then work down to the details later.&#xA;Once imported, the package name becomes an accessor for the contents of that package. Conveniently, all the packages in the Go standard library have a package name which is the same as the final element of their import path.</description>
+    </item>
+    <item>
+      <title>Some Post</title>
+      <link>http://localhost:1313/posts/my-first-post-copy-2/</link>
+      <pubDate>Thu, 02 May 2024 11:36:52 +0200</pubDate>
+      <guid>http://localhost:1313/posts/my-first-post-copy-2/</guid>
+      <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lobortis diam sit amet enim commodo ornare. Vivamus eu ante in arcu maximus gravida eu nec diam. Proin et ex vestibulum, ullamcorper justo id, lobortis justo. Aliquam suscipit viverra urna ac finibus. Maecenas ut ultrices sem. Donec luctus arcu sed ipsum molestie, at porttitor orci blandit. Quisque et mauris volutpat, vestibulum lectus tempus, elementum quam. Quisque cursus nunc hendrerit mauris convallis, nec placerat libero scelerisque.</description>
+    </item>
+    <item>
+      <title>Third post</title>
+      <link>http://localhost:1313/posts/my-first-post-copy/</link>
+      <pubDate>Thu, 02 May 2024 11:36:52 +0200</pubDate>
+      <guid>http://localhost:1313/posts/my-first-post-copy/</guid>
+      <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lobortis diam sit amet enim commodo ornare. Vivamus eu ante in arcu maximus gravida eu nec diam. Proin et ex vestibulum, ullamcorper justo id, lobortis justo. Aliquam suscipit viverra urna ac finibus. Maecenas ut ultrices sem. Donec luctus arcu sed ipsum molestie, at porttitor orci blandit. Quisque et mauris volutpat, vestibulum lectus tempus, elementum quam. Quisque cursus nunc hendrerit mauris convallis, nec placerat libero scelerisque.</description>
+    </item>
+  </channel>
+</rss>

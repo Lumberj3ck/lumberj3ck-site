@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+.rubik {
+    font-family: "Rubik", sans-serif;
+    font-optical-sizing: auto;
+}
+
+:root {
+    --max-width: 760px;
+    --bg-color: white;
+    --code-font-size: 15px;
+    --text-font-size: 18px;
+    --color-blue: #007BB6;
+}
+
+a {
+    color: var(--color-blue);
+    text-decoration: none;
+}
+
+h1{
+    margin-bottom: 1.5rem;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+
+.sidebar-sticky{
+    padding: 10px;
+}
+
+.home{
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 0 10px;
+}
+
+@media (min-width: 425px)  {
+    .home{
+    width: 90%;
+    margin: 0 auto;
+    }
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    font-family: "Rubik", sans-serif;
+    font-optical-sizing: auto;
+    line-height: 1.6;
+    font-size: var(--text-font-size);
+}
+
+@media (min-width: 768px)  {
+.sidebar-sticky{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 35%;
+    max-width: 350px;
+    border-left: 1px solid rgba(212, 200, 200, 0.526);
+    height: 100%;
+}
+.home{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: unset;
+}
+.content{
+    width: 55%;
+    margin-left: 5%;
+}
+.container-reset{
+    max-width: unset;
+}
+}
+.link{
+    color: black;
+}
+
+.dateTime{
+    font-weight: 400;
+    color: gray;
+}
+
+@media (min-width: 1000px)  {
+    .content{
+        width: 60%;
+    }
+    .container-reset{
+        max-width: 1000px;
+    }
+    .sidebar-sticky{
+        width: 30%;
+    }
+}
+
+@media (min-width: 1440px)  {
+    .container{
+        max-width: 1200px;
+    }
+}
+
+body {
+    background-color: var(--bg-color);
+}
+
+.highlight {
+    font-size: var(--code-font-size);
+}

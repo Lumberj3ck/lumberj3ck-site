@@ -1,0 +1,7 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'Lumberj3ck website'
+dateFmt = '15:04:05 2006-01-02'
+pygmentsUseClasses = true
+pygmentsCodefences = true
+goldmark.renderer.unsafe = true 
