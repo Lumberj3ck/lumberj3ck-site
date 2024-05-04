@@ -23,6 +23,15 @@
     <loc>http://localhost:1313/posts/my-first-post-copy/</loc>
     <lastmod>2024-05-02T11:36:52+02:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/posts/python-generics-copy/</loc>
+    <lastmod>2023-05-04T10:24:53+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/python-generics/</loc>
+    <lastmod>2023-05-04T10:24:53+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/python-generics-copy-2/</loc>
+    <lastmod>2022-05-04T10:24:53+02:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/archive/</loc>
   </url><url>
     <loc>http://localhost:1313/categories/</loc>

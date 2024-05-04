@@ -8,7 +8,11 @@
     <link rel="stylesheet" href="/css/syntax.css">
 </head>
 <body>
+{{ partial "navbar" . }}
+        <div style="padding-top: 60px; min-height: 85vh;">
         {{ block "main" . }}
         {{ end }}
+        </div>
+{{ partial "footer" . }}
 </body>
 </html>

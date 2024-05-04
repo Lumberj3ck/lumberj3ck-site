@@ -2,6 +2,7 @@
 title = 'New post'
 date = 2024-05-02T11:36:52+02:00
 draft = false
+summary = 'Set is muttable cause we have methods like add or remove while frozenset is not. You can check this by calling dir from object and if there is some methods which mutate state it is mutable data type.'
 +++
 
 This **tutorial** is written for anyone who is new to Go. In it we'll explain what packages, import statements and modules are in Go, how they work and relate to each other and — hopefully — clear up any questions that you have. We'll start at a high level, then work down to the details later.

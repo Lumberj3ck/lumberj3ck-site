@@ -1,0 +1,8 @@
+{{ range (where .Site.Pages "Type" "posts").GroupBy "Params.archivegroup" }}
+    <h2>{{ .Key }}</h2> 
+    <ul>
+        {{ range .Pages }}
+            <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+        {{ end }}
+    </ul>
+{{ end }}

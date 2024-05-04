@@ -1,0 +1,18 @@
+{{ define "main" }}
+<div class="container-reset container" style="margin-top: 35px;">
+  {{ range .Data.Pages.GroupByDate "2006" }}
+  <h4>{{ .Key }}</h4>
+  <ul>
+    {{ range .Pages }}
+    <li>
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+      <span class="dateTime" style="margin-left: 15px;">
+        <time >{{ .Date.Format (default "2006-01-02" .Site.Params.dateFmt) }}</time >
+        </span>
+    </li>
+    {{ end }}
+  </ul>
+  {{ end }} 
+</div>
+</div>
+{{ end }}
