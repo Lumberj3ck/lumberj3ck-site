@@ -1,3 +1,4 @@
+{{ define "meta"  }} <meta name="description" content="Browse my archive of blog posts. Find in-depth articles, helpful guides, and the latest news on python and go."> {{ end }}
 {{ define "main" }}
 <div class="page-detail" style="margin-top: 35px;">
   {{ range .Data.Pages.GroupByDate "2006" }}

@@ -7,6 +7,8 @@ summary = 'Set is muttable cause we have methods like add or remove while frozen
 
 This **tutorial** is written for anyone who is new to Go. In it we'll explain what packages, import statements and modules are in Go, how they work and relate to each other and — hopefully — clear up any questions that you have. We'll start at a high level, then work down to the details later.
 
+![Alt text for the image](images.png) 
+
 
 Once imported, *the package name* becomes an accessor for the contents of that package. Conveniently, all the packages in the Go standard library have a package name which is the same as the final element of their import path.
 

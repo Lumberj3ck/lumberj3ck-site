@@ -17,9 +17,9 @@
     </item>
     <item>
       <title>New post</title>
-      <link>http://localhost:1313/posts/my-first-post/</link>
+      <link>http://localhost:1313/posts/new-post/</link>
       <pubDate>Thu, 02 May 2024 11:36:52 +0200</pubDate>
-      <guid>http://localhost:1313/posts/my-first-post/</guid>
+      <guid>http://localhost:1313/posts/new-post/</guid>
       <description>Set is muttable cause we have methods like add or remove while frozenset is not. You can check this by calling dir from object and if there is some methods which mutate state it is mutable data type.</description>
     </item>
     <item>
@@ -28,13 +28,6 @@
       <pubDate>Wed, 04 May 2022 10:24:53 +0200</pubDate>
       <guid>http://localhost:1313/posts/python-generics1/</guid>
       <description>Set is muttable cause we have methods like add or remove while frozenset is not. You can check this by calling dir from object and if there is some methods which mutate state it is mutable data type.</description>
-    </item>
-    <item>
-      <title></title>
-      <link>http://localhost:1313/archive/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/archive/</guid>
-      <description></description>
     </item>
   </channel>
 </rss>

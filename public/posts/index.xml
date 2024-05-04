@@ -10,9 +10,9 @@
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>New post</title>
-      <link>http://localhost:1313/posts/my-first-post/</link>
+      <link>http://localhost:1313/posts/new-post/</link>
       <pubDate>Thu, 02 May 2024 11:36:52 +0200</pubDate>
-      <guid>http://localhost:1313/posts/my-first-post/</guid>
+      <guid>http://localhost:1313/posts/new-post/</guid>
       <description>Set is muttable cause we have methods like add or remove while frozenset is not. You can check this by calling dir from object and if there is some methods which mutate state it is mutable data type.</description>
     </item>
     <item>
