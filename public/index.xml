@@ -13,13 +13,20 @@
       <link>http://localhost:1313/about/</link>
       <pubDate>Thu, 02 May 2024 12:43:46 +0200</pubDate>
       <guid>http://localhost:1313/about/</guid>
-      <description>This is about note! </description>
+      <description>Hi there! I&amp;rsquo;m Alan, a software engineering student with a knack for building things and a burning passion for innovative tech. This website is a product of my current dive into the world of Go. As I explore this language, I wanted to create a space to track my own progress, share my learnings, and hopefully, benefit other Go enthusiasts just like me on their own journeys.&#xA;I&amp;rsquo;m not just a learner – I&amp;rsquo;m a doer, absolutely buzzing with ideas!</description>
     </item>
     <item>
       <title>New post</title>
       <link>http://localhost:1313/posts/new-post/</link>
       <pubDate>Thu, 02 May 2024 11:36:52 +0200</pubDate>
       <guid>http://localhost:1313/posts/new-post/</guid>
+      <description>Set is muttable cause we have methods like add or remove while frozenset is not. You can check this by calling dir from object and if there is some methods which mutate state it is mutable data type.</description>
+    </item>
+    <item>
+      <title>Python Mutations</title>
+      <link>http://localhost:1313/posts/python-mutations/</link>
+      <pubDate>Thu, 02 May 2024 11:36:52 +0200</pubDate>
+      <guid>http://localhost:1313/posts/python-mutations/</guid>
       <description>Set is muttable cause we have methods like add or remove while frozenset is not. You can check this by calling dir from object and if there is some methods which mutate state it is mutable data type.</description>
     </item>
     <item>

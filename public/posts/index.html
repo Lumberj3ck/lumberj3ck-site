@@ -6,11 +6,12 @@
     <title>Posts</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/syntax.css">
+    <meta property="og:type" content="article">
 	 <meta name="description" content="Browse my archive of blog posts. Find in-depth articles, helpful guides, and the latest news on python and go."> 
 	<meta name="author" content="Lumberj3ck">
 </head>
 <body>
-<header style="padding-top: 30px;">
+<header class="navbar-padding">
     <a href="/" class="logo" style="color: unset">Lumberj3ck</a>
     <input type="checkbox" id="nav_check" hidden>
     <nav>
@@ -34,6 +35,14 @@
     <style>
 * {
     box-sizing: border-box;
+}
+.navbar-padding{
+    padding-top: 20px;
+}
+@media (min-width: 768px) {
+    .navbar-padding{
+        padding-top: 30px;
+    } 
 }
 
 .nav-link {
@@ -67,8 +76,8 @@ header {
 header.hide {
   transform: translateY(-100%);
 }
-header .logo {
-    font-size: 30px;
+header .logo    {
+    font-size: 20px;
     text-transform: uppercase;
 }
 header nav ul {
@@ -111,7 +120,7 @@ header nav ul li a {
         background: #fff;
         padding: 30px;
         transition: 0.3s;
-        height: 1000px;
+        height: 9000px;
     }
     header #nav_check:checked ~ nav {
         left: 0;
@@ -154,6 +163,13 @@ window.addEventListener("scroll", () => {
   <ul>
     
     <li>
+      <a href="http://localhost:1313/posts/python-mutations/">Python Mutations</a>
+      <span class="dateTime" style="margin-left: 15px;">
+        <time >2024-05-02</time >
+        </span>
+    </li>
+    
+    <li>
       <a href="http://localhost:1313/posts/new-post/">New post</a>
       <span class="dateTime" style="margin-left: 15px;">
         <time >2024-05-02</time >
@@ -187,13 +203,13 @@ window.addEventListener("scroll", () => {
         </span>
         <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0" style=" list-style: none; margin: 0; padding: 0">
             <li>
-                <a href="/" class="hover:underline me-4 md:me-6 footer_link">Home</a>
-            </li>
-            <li>
                 <a href="https://opensource.org/license/MIT" class="hover:underline me-4 md:me-6 footer_link">Licensing</a>
             </li>
             <li>
-                <a href="/about" class="hover:underline footer_link">About</a>
+                <a href="https://github.com/Lumberj3ck/" class="hover:underline me-4 md:me-6 footer_link">Github</a>
+            </li>
+            <li>
+                <a href="https://www.linkedin.com/in/lumberj3ck/" class="hover:underline footer_link">LinkedIn</a>
             </li>
         </ul>
     </div>

@@ -1,4 +1,4 @@
-<header style="padding-top: 30px;">
+<header class="navbar-padding">
     <a href="/" class="logo" style="color: unset">Lumberj3ck</a>
     <input type="checkbox" id="nav_check" hidden>
     <nav>
@@ -22,6 +22,14 @@
     <style>
 * {
     box-sizing: border-box;
+}
+.navbar-padding{
+    padding-top: 20px;
+}
+@media (min-width: 768px) {
+    .navbar-padding{
+        padding-top: 30px;
+    } 
 }
 
 .nav-link {
@@ -55,8 +63,8 @@ header {
 header.hide {
   transform: translateY(-100%);
 }
-header .logo {
-    font-size: 30px;
+header .logo    {
+    font-size: 20px;
     text-transform: uppercase;
 }
 header nav ul {
@@ -99,7 +107,7 @@ header nav ul li a {
         background: #fff;
         padding: 30px;
         transition: 0.3s;
-        height: 1000px;
+        height: 9000px;
     }
     header #nav_check:checked ~ nav {
         left: 0;

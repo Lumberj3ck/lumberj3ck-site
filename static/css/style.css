@@ -9,8 +9,10 @@
     --max-width: 760px;
     --bg-color: white;
     --code-font-size: 15px;
-    --text-font-size: 18px;
+    --text-font-size: 16px;
+    --medium-text-font-size: 18px;
     --color-blue: #007BB6;
+    --code-padding: 10px;
 }
 
 a {
@@ -57,6 +59,11 @@ body {
     font-size: var(--text-font-size);
 }
 
+@media (min-width: 768px) {
+    body{
+        font-size: var(--medium-text-font-size);
+    }
+}
 
 @media (min-width: 768px) {
     .page-detail{
@@ -89,4 +96,28 @@ body {
 
 .highlight {
     font-size: var(--code-font-size);
+}
+
+pre{
+    margin: 0;
+}
+
+.lntable td:first-child pre {
+    padding: var(--code-padding) 0 var(--code-padding) var(--code-padding);
+}
+
+.highlight pre {
+    padding: var(--code-padding) var(--code-padding) var(--code-padding) 0;
+}
+
+@media (max-width: 768px) { 
+    h1{
+        font-size: 25px;
+    }
+  .highlight, 
+  .highlight pre,
+  .highlight .chroma code {
+    overflow-x: auto; 
+    /* white-space: pre;  */
+  }
 }

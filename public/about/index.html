@@ -6,11 +6,12 @@
     <title>About</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/syntax.css">
+    <meta property="og:type" content="article">
 	 <meta name="description" content=""> 
 	<meta name="author" content="Lumberj3ck">
 </head>
 <body>
-<header style="padding-top: 30px;">
+<header class="navbar-padding">
     <a href="/" class="logo" style="color: unset">Lumberj3ck</a>
     <input type="checkbox" id="nav_check" hidden>
     <nav>
@@ -34,6 +35,14 @@
     <style>
 * {
     box-sizing: border-box;
+}
+.navbar-padding{
+    padding-top: 20px;
+}
+@media (min-width: 768px) {
+    .navbar-padding{
+        padding-top: 30px;
+    } 
 }
 
 .nav-link {
@@ -67,8 +76,8 @@ header {
 header.hide {
   transform: translateY(-100%);
 }
-header .logo {
-    font-size: 30px;
+header .logo    {
+    font-size: 20px;
     text-transform: uppercase;
 }
 header nav ul {
@@ -111,7 +120,7 @@ header nav ul li a {
         background: #fff;
         padding: 30px;
         transition: 0.3s;
-        height: 1000px;
+        height: 9000px;
     }
     header #nav_check:checked ~ nav {
         left: 0;
@@ -155,7 +164,11 @@ window.addEventListener("scroll", () => {
     <time>2024-05-02</time >
     </div>
     <div class="wrapper">
-    <h2 id="this-is-about-note">This is about note!</h2>
+    <p>Hi there! I&rsquo;m Alan, a software engineering student with a knack for building things and a burning passion for innovative tech. This website is a product of my current dive into the world of <strong>Go</strong>. As I explore this language, I wanted to create a space to track my own progress, share my learnings, and hopefully, benefit other Go enthusiasts just like me on their own journeys.</p>
+<p>I&rsquo;m not just a learner – I&rsquo;m a doer, absolutely buzzing with ideas! I&rsquo;ve explored <strong>Python</strong>, <strong>Javascript</strong>. I&rsquo;m currently working on customizeable <em>Valentine postcard website</em> and I&rsquo;ve also built a couple of other project and continue maintain those.  Want more details on that? Check the <a href="https://www.my-valentine-postcard.site/">link</a>.</p>
+<p>You won&rsquo;t find me sitting still. I thrive on challenges, whether it&rsquo;s wrestling with code or pushing my limits at the gym. When I&rsquo;m not building software, I&rsquo;m probably blasting some Linkin Park to match my energy!</p>
+<p>If you&rsquo;ve got any questions, suggestions, or would like to discuss a project then please email me or get in touch on any of the platforms below. I&rsquo;d be happy to hear from you.</p>
+<p><a href="mailto:alanuldashev@gmail.com">alanuldashev@gmail.com</a> | <a href="https://www.linkedin.com/in/lumberj3ck/">LinkedIn</a> |   <a href="https://github.com/Lumberj3ck/">Github</a></p>
 
     </div>
 </div>
@@ -170,13 +183,13 @@ window.addEventListener("scroll", () => {
         </span>
         <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0" style=" list-style: none; margin: 0; padding: 0">
             <li>
-                <a href="/" class="hover:underline me-4 md:me-6 footer_link">Home</a>
-            </li>
-            <li>
                 <a href="https://opensource.org/license/MIT" class="hover:underline me-4 md:me-6 footer_link">Licensing</a>
             </li>
             <li>
-                <a href="/about" class="hover:underline footer_link">About</a>
+                <a href="https://github.com/Lumberj3ck/" class="hover:underline me-4 md:me-6 footer_link">Github</a>
+            </li>
+            <li>
+                <a href="https://www.linkedin.com/in/lumberj3ck/" class="hover:underline footer_link">LinkedIn</a>
             </li>
         </ul>
     </div>
