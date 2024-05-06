@@ -20,7 +20,7 @@
       <link>http://localhost:1313/posts/binary-numbers/</link>
       <pubDate>Mon, 06 May 2024 12:44:25 +0200</pubDate>
       <guid>http://localhost:1313/posts/binary-numbers/</guid>
-      <description>So basically each 1 or in 1001110 means the power of 2&#xA;for example&#xA;Pow of 2 7 6 5 4 3 2 1 0 Value 128 64 32 16 8 4 2 1 Presense 0 0 1 0 1 1 0 1 one stand for yes and zero for no; it means basically if this power of two is present inside of our number&#xA;So the number which we got is:</description>
+      <description>So basically each 1 or 0 in binary number means the power of 2&#xA;One&#xD;stand for yes and zero for No&#xD;. It means if this power of two is present inside of our number or not.&#xA;Lets build a 42 as the sum powers of 2:&#xA;32 + 8 + 2 = 42&#xA;32 is 2^5&#xA;8 is 2^3&#xA;2 is 2^1&#xA;The first right number in binary stands for 2 to power of 0 The second right number in binary stands for 2 to power of 1 &amp;hellip; In our example we don&amp;rsquo;t need 2^0 we need 2^1 this is second digit in binary number, but we don&amp;rsquo;t skip the first digit we just set it as 0.</description>
     </item>
     <item>
       <title>Python Scope</title>
