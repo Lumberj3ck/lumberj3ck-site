@@ -1,13 +1,15 @@
-<footer class="bg-white rounded-lg shadow m-4 p-4 dark:bg-gray-800">
+<footer class="bg-white rounded-lg shadow dark:bg-gray-800 footer-main">
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <div class="w-full mx-auto max-w-screen-xl md:flex md:items-center md:justify-between">
         <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023
             <a href="/" class="hover:underline footer_link">Lumberj3ck™</a>. All
             Rights Reserved.
         </span>
-        <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0" style=" list-style: none; margin: 0; padding: 0">
+        <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0"
+            style=" list-style: none; margin: 0; padding: 0">
             <li>
-                <a href="https://opensource.org/license/MIT" class="hover:underline me-4 md:me-6 footer_link">Licensing</a>
+                <a href="https://opensource.org/license/MIT"
+                    class="hover:underline me-4 md:me-6 footer_link">Licensing</a>
             </li>
             <li>
                 <a href="https://github.com/Lumberj3ck/" class="hover:underline me-4 md:me-6 footer_link">Github</a>
@@ -18,7 +20,13 @@
         </ul>
     </div>
     <style>
-        .footer_link{
+        .footer-main {
+            max-width: 760px;
+            margin: 1rem auto;
+            padding: 8px;
+        }
+
+        .footer_link {
             color: inherit;
             text-decoration: inherit
         }
@@ -100,6 +108,11 @@
 
             .sm\:text-center {
                 text-align: center
+            }
+        }
+        @media (max-width:768px){
+            .footer-main{
+                width: 90%;
             }
         }
 
