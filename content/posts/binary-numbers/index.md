@@ -2,7 +2,7 @@
 title = 'Binary Numbers'
 date = 2024-05-06T12:44:25+02:00
 draft = false
-summary = ''
+summary = 'Discover how a series of simple 0s and 1s form the backbone of digital calculations. This article breaks down binary representation, shows how to translate it into familiar numbers, and explores the fascinating concept of bit shifting for efficient manipulation within Go programs.'
 +++
 
 {{< figure src="image.png" style="min-width: 250px; max-width:400px" width="100%">}}
@@ -27,18 +27,17 @@ At this moment we have: 10
 
 There also some binary operators 
 **Shifting:** 
-```python
+{{< highlight python "linenos=table,hl_lines=,linenostart=1" >}}
 n = 45
 n = n << 1 # n is 90
-
-```
+{{< / highlight >}}
 
 so we basically shift all numbers by 1 so it basically like multipliying by 2
 
-```python
+{{< highlight python "linenos=table,hl_lines=,linenostart=1" >}}
 pow = 1
 pow = pow << 2 
-```
+{{< / highlight >}}
 
 So shifting **1** means that we shift it to some power of two 
 for example if we shift 1 by 2 it means shift to 4

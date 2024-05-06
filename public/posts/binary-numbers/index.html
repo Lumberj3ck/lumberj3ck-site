@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/syntax.css">
     <meta property="og:type" content="article">
-     <meta name="description" content=""> 
+     <meta name="description" content="Discover how a series of simple 0s and 1s form the backbone of digital calculations. This article breaks down binary representation, shows how to translate it into familiar numbers, and explores the fascinating concept of bit shifting for efficient manipulation within Go programs."> 
     
     <meta name="author" content="Lumberj3ck">
 </head>
@@ -194,13 +194,29 @@ It means if this power of two is present inside of our number or not.</p>
 <p>In our example we don&rsquo;t need 2^0 we need 2^1 this is second digit in binary number, but we don&rsquo;t skip the first digit we just set it as 0.
 At this moment we have: 10</p>
 <p>There also some binary operators
-<strong>Shifting:</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">n</span> <span class="o">=</span> <span class="mi">45</span>
-</span></span><span class="line"><span class="cl"><span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span> <span class="c1"># n is 90</span>
-</span></span></code></pre></div><p>so we basically shift all numbers by 1 so it basically like multipliying by 2</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nb">pow</span> <span class="o">=</span> <span class="mi">1</span>
-</span></span><span class="line"><span class="cl"><span class="nb">pow</span> <span class="o">=</span> <span class="nb">pow</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span> 
-</span></span></code></pre></div><p>So shifting <strong>1</strong> means that we shift it to some power of two
+<strong>Shifting:</strong>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">n</span> <span class="o">=</span> <span class="mi">45</span>
+</span></span><span class="line"><span class="cl"><span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span> <span class="c1"># n is 90</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p>so we basically shift all numbers by 1 so it basically like multipliying by 2</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nb">pow</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="nb">pow</span> <span class="o">=</span> <span class="nb">pow</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span> </span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>So shifting <strong>1</strong> means that we shift it to some power of two
 for example if we shift 1 by 2 it means shift to 4</p>
 <p>Based on this Go has <a href="/posts/uint-and-int">Uint and Int</a> types</p>
 

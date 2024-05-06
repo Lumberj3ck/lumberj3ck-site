@@ -13,14 +13,14 @@
       <link>http://localhost:1313/posts/uint-and-int/</link>
       <pubDate>Mon, 06 May 2024 12:46:04 +0200</pubDate>
       <guid>http://localhost:1313/posts/uint-and-int/</guid>
-      <description>In Go there a two types representing numbers (excluding floating point nubmers): uint and int. The maximum digital value you can store in int is 127. In uint is a 255. Here is why ⬇️&#xA;Every programming language saves numbers in Binary numbers&#xA;Int stands for all numbers positive and negative, when the uint in the opposite only for positive values from 0 to max_value.&#xA;So in int we spend one bit in front of every number for storing a sign of the number (1 for negative and 0 for positive).</description>
+      <description>Discover how Go uses &amp;lsquo;int&amp;rsquo; and &amp;lsquo;uint&amp;rsquo; to represent numbers. Explore how binary storage affects their capacity and why one handles negative values while the other doesn&amp;rsquo;t.</description>
     </item>
     <item>
       <title>Binary Numbers</title>
       <link>http://localhost:1313/posts/binary-numbers/</link>
       <pubDate>Mon, 06 May 2024 12:44:25 +0200</pubDate>
       <guid>http://localhost:1313/posts/binary-numbers/</guid>
-      <description>So basically each 1 or 0 in binary number means the power of 2&#xA;One&#xD;stand for yes and zero for No&#xD;. It means if this power of two is present inside of our number or not.&#xA;Lets build a 42 as the sum powers of 2:&#xA;32 + 8 + 2 = 42&#xA;32 is 2^5&#xA;8 is 2^3&#xA;2 is 2^1&#xA;The first right number in binary stands for 2 to power of 0 The second right number in binary stands for 2 to power of 1 &amp;hellip; In our example we don&amp;rsquo;t need 2^0 we need 2^1 this is second digit in binary number, but we don&amp;rsquo;t skip the first digit we just set it as 0.</description>
+      <description>Discover how a series of simple 0s and 1s form the backbone of digital calculations. This article breaks down binary representation, shows how to translate it into familiar numbers, and explores the fascinating concept of bit shifting for efficient manipulation within Go programs.</description>
     </item>
     <item>
       <title>Python Scope</title>

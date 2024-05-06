@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,11 +10,16 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/syntax.css">
     <meta property="og:type" content="article">
-	 <meta name="description" content="Explore my insightful blog  Discover the latest articles, tips, and tutorials to help you achieve your goals."> 
-	<meta name="author" content="Lumberj3ck">
+    
+    <meta name="description" content="Explore my insightful blog  Discover the latest articles, tips, and tutorials to help you achieve your goals."> 
+    
+    <meta name="author" content="Lumberj3ck">
 </head>
+
 <body>
-<header class="navbar-padding">
+    
+    <div>
+    <div class="nav-header navbar-padding">
     <a href="/" class="logo" style="color: unset">Lumberj3ck</a>
     <input type="checkbox" id="nav_check" hidden>
     <nav>
@@ -38,14 +44,7 @@
 * {
     box-sizing: border-box;
 }
-.navbar-padding{
-    padding-top: 20px;
-}
-@media (min-width: 768px) {
-    .navbar-padding{
-        padding-top: 30px;
-    } 
-}
+ 
 
 .nav-link {
     margin: 0;
@@ -60,14 +59,15 @@
     text-decoration: unset;
 }
 
-header {
+.nav-header {
     background: #fff;
     width: 100%;
     height: 70px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 80px;
+     
+    padding: 0;
      position: fixed;
   top: 0;
   left: 0;
@@ -75,17 +75,17 @@ header {
   transition: transform 0.3s ease-in-out;
   z-index: 9999;
 }
-header.hide {
+.hide {
   transform: translateY(-100%);
 }
-header .logo    {
+.nav-header .logo    {
     font-size: 20px;
     text-transform: uppercase;
 }
-header nav ul {
+.nav-header nav ul {
     display: flex;
 }
-header nav ul li a {
+.nav-header nav ul li a {
     display: inline-block;
     color: #000;
     padding: 5px 0;
@@ -104,39 +104,48 @@ header nav ul li a {
     margin: 5px 0;
     background: #000;
 }
-@media only screen and (max-width: 900px) {
-    header {
-        padding: 0 30px;
-    }
-}
 @media only screen and (max-width: 700px) {
     .hamburger {
         display: block;
     }
-    header nav {
+    .nav-header nav {
         position: absolute;
         width: 100%;
         left: -100%;
         top: 70px;
         width: 100%;
         background: #fff;
-        padding: 30px;
+         
+        padding-top: 30px;
         transition: 0.3s;
         height: 9000px;
     }
-    header #nav_check:checked ~ nav {
+    .nav-header #nav_check:checked ~ nav {
         left: 0;
     }
-    header nav ul {
+    .nav-header nav ul {
         display: block;
     }
     .nav-link {
         margin-bottom: 15px;
     }
 }
+.navbar-padding{
+     
+    max-width: 760px;
+    margin: 0 auto;
+    width: 95%;
+    padding: 20px 8px 0 8px
+}
+
+@media (min-width: 768px) {
+    .navbar-padding{
+        width: 90%;
+    }
+}
     </style>
     <script>
-        const header = document.querySelector("header");
+        const header = document.querySelector(".nav-header");
 
 let lastScrollPosition = 0;
 
@@ -156,22 +165,26 @@ window.addEventListener("scroll", () => {
 })
 
     </script>
-</header>
-        <div style="padding-top: 60px; min-height: 85vh;">
+    </div>
+</div>
+    <div style="padding-top: 60px; min-height: 85vh; ">
         
 Sorry, we've misplaced that URL or it's pointing to something that doesn't exist. Head back home to try finding it again.
 
-        </div>
-<footer class="bg-white rounded-lg shadow m-4 p-4 dark:bg-gray-800">
+    </div>
+    
+    <footer class="bg-white rounded-lg shadow dark:bg-gray-800 footer-main">
     
     <div class="w-full mx-auto max-w-screen-xl md:flex md:items-center md:justify-between">
         <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023
             <a href="/" class="hover:underline footer_link">Lumberj3ck™</a>. All
             Rights Reserved.
         </span>
-        <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0" style=" list-style: none; margin: 0; padding: 0">
+        <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0"
+            style=" list-style: none; margin: 0; padding: 0">
             <li>
-                <a href="https://opensource.org/license/MIT" class="hover:underline me-4 md:me-6 footer_link">Licensing</a>
+                <a href="https://opensource.org/license/MIT"
+                    class="hover:underline me-4 md:me-6 footer_link">Licensing</a>
             </li>
             <li>
                 <a href="https://github.com/Lumberj3ck/" class="hover:underline me-4 md:me-6 footer_link">Github</a>
@@ -182,7 +195,13 @@ Sorry, we've misplaced that URL or it's pointing to something that doesn't exist
         </ul>
     </div>
     <style>
-        .footer_link{
+        .footer-main {
+            max-width: 760px;
+            margin: 1rem auto;
+            padding: 8px;
+        }
+
+        .footer_link {
             color: inherit;
             text-decoration: inherit
         }
@@ -266,6 +285,11 @@ Sorry, we've misplaced that URL or it's pointing to something that doesn't exist
                 text-align: center
             }
         }
+        @media (max-width:768px){
+            .footer-main{
+                width: 90%;
+            }
+        }
 
         @media (min-width: 768px) {
             .md\:me-6 {
@@ -286,5 +310,7 @@ Sorry, we've misplaced that URL or it's pointing to something that doesn't exist
         }
     </style>
 </footer>
+
 </body>
+
 </html>
