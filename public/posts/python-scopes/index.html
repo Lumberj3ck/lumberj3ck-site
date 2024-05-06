@@ -3,21 +3,21 @@
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Variables</title>
-    <link rel="stylesheet" href="/css/style1.css">
+    <title>Python Scope</title>
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/syntax.css">
+    <meta property="og:type" content="article">
+	 <meta name="description" content="Learn how Python handles variables in different scopes. Avoid errors and write predictable code by understanding how functions access and modify variables."> 
+	<meta name="author" content="Lumberj3ck">
 </head>
 <body>
-        <header>
-    <div class="logo">Lumberj3ck</div>
+<header class="navbar-padding">
+    <a href="/" class="logo" style="color: unset">Lumberj3ck</a>
     <input type="checkbox" id="nav_check" hidden>
     <nav>
         <ul class="nav-link">
             <li style="margin-right: 5px">
                 <a href="/" class="active nav-link">Home</a>
-            </li>
-            <li style="margin-right: 5px">
-                <a href="" class="nav-link">Portfolio</a>
             </li>
             <li style="margin-right: 5px">
                 <a href="/posts" class="nav-link">Archive</a>
@@ -36,6 +36,14 @@
 * {
     box-sizing: border-box;
 }
+.navbar-padding{
+    padding-top: 20px;
+}
+@media (min-width: 768px) {
+    .navbar-padding{
+        padding-top: 30px;
+    } 
+}
 
 .nav-link {
     margin: 0;
@@ -50,21 +58,6 @@
     text-decoration: unset;
 }
 
-section{
-    display: flex;
-  align-items: center;
-  justify-content: center;
-
-}
-.section1{
-  min-height:100vh;
-  background:#ffddff;
-}
-
-.section2{
-  min-height:100vh;
-  background:#fddddf;
-}
 header {
     background: #fff;
     width: 100%;
@@ -72,7 +65,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 50px;
+    padding: 0 80px;
      position: fixed;
   top: 0;
   left: 0;
@@ -83,8 +76,8 @@ header {
 header.hide {
   transform: translateY(-100%);
 }
-header .logo {
-    font-size: 30px;
+header .logo    {
+    font-size: 20px;
     text-transform: uppercase;
 }
 header nav ul {
@@ -127,7 +120,7 @@ header nav ul li a {
         background: #fff;
         padding: 30px;
         transition: 0.3s;
-        height: 1000px;
+        height: 9000px;
     }
     header #nav_check:checked ~ nav {
         left: 0;
@@ -165,25 +158,44 @@ window.addEventListener("scroll", () => {
         <div style="padding-top: 60px; min-height: 85vh;">
         
 <div class="page-detail">
-    <h1>Python Variables</h1>
+    <h1>Python Scope</h1>
     <div class="dateTime">
     <strong>Published</strong>
-    <time>2022-05-04</time >
+    <time>2024-05-06</time >
     </div>
     <div class="wrapper">
-    <div class="highlight"><div class="chroma">
+    <p>This is a note about python Scopes.</p>
+<p>So there is a global scope everything which is outside of a function and there also local scope which is inside of a function.</p>
+<div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="n">numbers2</span> <span class="o">=</span> <span class="n">numbers</span>
-</span></span><span class="line"><span class="cl"><span class="n">name</span> <span class="o">=</span> <span class="s2">&#34;Trey&#34;</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># they are threating each other as the different namespaces</span>
+</span></span><span class="line"><span class="cl"><span class="n">temp</span> <span class="o">=</span> <span class="s1">&#39;global&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">change</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">temp</span> <span class="o">=</span> <span class="s1">&#39;local&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span> <span class="c1"># &#39;local&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span> <span class="c1"># &#39;global&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">change</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">global</span> <span class="n">temp</span>
+</span></span><span class="line"><span class="cl">    <span class="n">temp</span> <span class="o">=</span> <span class="s1">&#39;local&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span> <span class="c1"># local</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
-<p>Numbers2 is a link to numbers, so the difference that numbers2 is not totaly different object in memory it is just the same object which is linked to numbers. So whexn numbers is mutating we can see it also affects on numbers2.</p>
+<p>If we want to overwrite this behaviour we should use <strong>global</strong> operator</p>
+<p>The same behaviour we would see if we try to change a variable which is defined inside of a function.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -192,78 +204,39 @@ window.addEventListener("scroll", () => {
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span><span class="lnt">6
+</span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">numbers</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="mi">7</span>
-</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">numbers</span>
-</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">numbers2</span>
-</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">temp</span> <span class="o">=</span> <span class="s1">&#39;main local&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">        <span class="n">temp</span> <span class="o">=</span> <span class="s1">&#39;wrapper local&#39;</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Inside of a wrapper&#34;</span><span class="p">,</span> <span class="n">temp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">wrapper</span><span class="p">()</span> <span class="c1"># Inside of a wrapper local temp</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Inside of main&#34;</span><span class="p">,</span> <span class="n">temp</span><span class="p">)</span> <span class="c1"># Inside of main value</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
-<p>Here we can see changes in numbers not because variable changed but because of object changed.</p>
-<h2 id="two-types-of-changing-in-python">Two types of changing in Python</h2>
-<blockquote style="background-color: #f2f8fb; padding: 10px; margin: 10px 0; border-left: 3px solid rgb(79, 79, 211);">
-    <p  style="margin-left: 5px;"><ol>
-<li>Mutation  ( changes objects state )</li>
-<li>Change posession ( changes link to completely different object )</li>
-</ol>
-</p>
-</blockquote>
-<p>Is  <span style="color: #A82255">
-    operator
-</span> in Python checks if two variables is pointing to the same cell in memory</p>
-<p><strong>==</strong> operator in Python checks if two variables stores the same data</p>
-<p>Mutation is working only for mutable data types in Python, for example for int or string it will not .</p>
-<table>
-<thead>
-<tr>
-<th>Mutable</th>
-<th>Immutable</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>List</td>
-<td>Integer</td>
-</tr>
-<tr>
-<td>Set</td>
-<td>Tupple</td>
-</tr>
-<tr>
-<td>Dict</td>
-<td>String</td>
-</tr>
-<tr>
-<td>Array</td>
-<td>Boolean</td>
-</tr>
-<tr>
-<td>&mdash;</td>
-<td>Frozen set</td>
-</tr>
-<tr>
-<td>&mdash;</td>
-<td>Float, Bytes</td>
-</tr>
-</tbody>
-</table>
-<p>Set is muttable cause we have methods like add or remove while frozenset is not.
-You can check this by calling dir from object and if there is some methods which mutate state it is mutable data type.</p>
-<p>If type can be hashed than this data type is immutable</p>
-<p>In this code:</p>
-<ul>
-<li>We declare the <span style="color: #A82255">
-     score 
-</span> variable normally in main() with the line score := 20.</li>
-<li>Then in the line incrementScore(&amp;score) we use the reference operator &amp; to get a pointer to the score variable, and pass this pointer as the argument to incrementScore(). Remember, a pointer just contains a memory address – in this case it&rsquo;s the memory address of the score variable.</li>
-<li>When incrementScore() is executed, the parameter s contains a copy of this pointer. But this copy still holds the same memory address – the memory address of the score variable.</li>
-<li>In the line newScore := *s + 10 we use the dereference operator *s to &lsquo;read through&rsquo; and get the underlying value at that memory address, and add ten to it.</li>
-<li>Then in the next line *s = newScore we use the dereference operator again to &lsquo;write through&rsquo; and set newScore as the value at that memory address.</li>
-<li>The end result is that we&rsquo;ve mutated the value at the memory address of the score variable. So when the program executes the final line of code, we get the output &ldquo;The score is 30&rdquo;.</li>
-</ul>
+<p>But if we want to access a variable, which is instantiated inside of a local scope (inside of a function) we need to use a <strong>local</strong> operator</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">temp</span> <span class="o">=</span> <span class="s1">&#39;main local&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">        <span class="n">local</span> <span class="n">temp</span> 
+</span></span><span class="line"><span class="cl">        <span class="c1"># We used a local operator,</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># now we can impact the variable defined inside of main </span>
+</span></span><span class="line"><span class="cl">        <span class="n">temp</span> <span class="o">=</span> <span class="s1">&#39;wrapper local&#39;</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
 
     </div>
 </div>
@@ -278,13 +251,13 @@ You can check this by calling dir from object and if there is some methods which
         </span>
         <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0" style=" list-style: none; margin: 0; padding: 0">
             <li>
-                <a href="/" class="hover:underline me-4 md:me-6 footer_link">Home</a>
-            </li>
-            <li>
                 <a href="https://opensource.org/license/MIT" class="hover:underline me-4 md:me-6 footer_link">Licensing</a>
             </li>
             <li>
-                <a href="/about" class="hover:underline footer_link">About</a>
+                <a href="https://github.com/Lumberj3ck/" class="hover:underline me-4 md:me-6 footer_link">Github</a>
+            </li>
+            <li>
+                <a href="https://www.linkedin.com/in/lumberj3ck/" class="hover:underline footer_link">LinkedIn</a>
             </li>
         </ul>
     </div>

@@ -1,0 +1,5 @@
+{{ $image := .Page.Resources.GetMatch .Get "src" }}
+{{ with $image }}
+  {{ $resizedImage := $image.Resize (printf "%dx%d" (.Get "width") (.Get "height")) }}
+  <img src="{{ $resizedImage.Permalink }}" width="{{ .Get "width" }}" height="{{ .Get "height" }}" alt="{{ .Get "alt" | default "" }}" />
+{{ end }}

@@ -3,12 +3,15 @@
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New post</title>
+    <title>Binary Numbers</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/syntax.css">
+    <meta property="og:type" content="article">
+	 <meta name="description" content=""> 
+	<meta name="author" content="Lumberj3ck">
 </head>
 <body>
-<header style="padding-top: 30px;">
+<header class="navbar-padding">
     <a href="/" class="logo" style="color: unset">Lumberj3ck</a>
     <input type="checkbox" id="nav_check" hidden>
     <nav>
@@ -32,6 +35,14 @@
     <style>
 * {
     box-sizing: border-box;
+}
+.navbar-padding{
+    padding-top: 20px;
+}
+@media (min-width: 768px) {
+    .navbar-padding{
+        padding-top: 30px;
+    } 
 }
 
 .nav-link {
@@ -65,8 +76,8 @@ header {
 header.hide {
   transform: translateY(-100%);
 }
-header .logo {
-    font-size: 30px;
+header .logo    {
+    font-size: 20px;
     text-transform: uppercase;
 }
 header nav ul {
@@ -109,7 +120,7 @@ header nav ul li a {
         background: #fff;
         padding: 30px;
         transition: 0.3s;
-        height: 1000px;
+        height: 9000px;
     }
     header #nav_check:checked ~ nav {
         left: 0;
@@ -147,64 +158,42 @@ window.addEventListener("scroll", () => {
         <div style="padding-top: 60px; min-height: 85vh;">
         
 <div class="page-detail">
-    <h1>New post</h1>
+    <h1>Binary Numbers</h1>
     <div class="dateTime">
     <strong>Published</strong>
-    <time>2024-05-02</time >
+    <time>2024-05-06</time >
     </div>
     <div class="wrapper">
-    <p>This <strong>tutorial</strong> is written for anyone who is new to Go. In it we&rsquo;ll explain what packages, import statements and modules are in Go, how they work and relate to each other and — hopefully — clear up any questions that you have. We&rsquo;ll start at a high level, then work down to the details later.</p>
-<p><img src="images.png" alt="Alt text for the image"></p>
-<p>Once imported, <em>the package name</em> becomes an accessor for the contents of that package. Conveniently, all the packages in the Go standard library have a package name which is the same as the final element of their import path.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># File main.py</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">math</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span> <span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span></span></span></code></pre></td></tr></table>
-</div>
-</div>
-<p>Something is about to get heavy</p>
+    <figure style="min-width: 250px; max-width:400px"><img src="/posts/binary-numbers/image.png" width="100%">
+</figure>
+<p>So basically each 1 or 0 in binary number means the power of 2</p>
+<p><span style="color: #A82255">
+    One
+</span> stand for yes and zero for <span style="color: #A82255">
+    No
+</span>.
+It means if this power of two is present inside of our number or not.</p>
+<p><strong>Lets build a 42 as the sum powers of 2:</strong></p>
+<p>32 + 8 + 2 = <strong>42</strong><br>
+32 is <strong>2</strong>^5<br>
+8 is <strong>2</strong>^3<br>
+2 is <strong>2</strong>^1</p>
 <ul>
-<li>Once imported, <em>the package name</em> becomes an accessor for the contents of that package. Conveniently, all the packages in the Go standard library have a package name which is the same as the final element of their import path.</li>
-<li>Once imported, <em>the package name</em> becomes an accessor for the contents of that package. Conveniently, all the packages in the Go standard library have a package name which is the same as the final element of their import path.</li>
+<li>The first right number in binary stands for 2 to power of 0</li>
+<li>The second right number in binary stands for 2 to power of 1   <strong>&hellip;</strong></li>
 </ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># File main.py</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">math</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span> <span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span></span></span></code></pre></td></tr></table>
-</div>
-</div>
-<p>Something is about to get heavy</p>
-<ul>
-<li>Once imported, <em>the package name</em> becomes an accessor for the contents of that package. Conveniently, all the packages in the Go standard library have a package name which is the same as the final element of their import path.</li>
-<li>Once imported, <em>the package name</em> becomes an accessor for the contents of that package. Conveniently, all the packages in the Go standard library have a package name which is the same as the final element of their import path.</li>
-</ul>
-<blockquote style="background-color: #f2f8fb; padding: 10px; margin: 10px 0; border-left: 3px solid rgb(79, 79, 211);">
-    <p  style="margin-left: 5px;"><strong>Note:</strong> Once imported, <em>the package name</em> becomes an accessor for the contents of that package. Conveniently, all the packages in the Go standard library have a package name which is the same as the final element of their import path.</p>
-</blockquote>
+<p>In our example we don&rsquo;t need 2^0 we need 2^1 this is second digit in binary number, but we don&rsquo;t skip the first digit we just set it as 0.
+At this moment we have: 10</p>
+<p>There also some binary operators
+<strong>Shifting:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">n</span> <span class="o">=</span> <span class="mi">45</span>
+</span></span><span class="line"><span class="cl"><span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span> <span class="c1"># n is 90</span>
+</span></span></code></pre></div><p>so we basically shift all numbers by 1 so it basically like multipliying by 2</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nb">pow</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="nb">pow</span> <span class="o">=</span> <span class="nb">pow</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span> 
+</span></span></code></pre></div><p>So shifting <strong>1</strong> means that we shift it to some power of two
+for example if we shift 1 by 2 it means shift to 4</p>
+<p>Based on this Go has <a href="/posts/uint-and-int">Uint and Int</a> types</p>
 
     </div>
 </div>
@@ -219,13 +208,13 @@ window.addEventListener("scroll", () => {
         </span>
         <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0" style=" list-style: none; margin: 0; padding: 0">
             <li>
-                <a href="/" class="hover:underline me-4 md:me-6 footer_link">Home</a>
-            </li>
-            <li>
                 <a href="https://opensource.org/license/MIT" class="hover:underline me-4 md:me-6 footer_link">Licensing</a>
             </li>
             <li>
-                <a href="/about" class="hover:underline footer_link">About</a>
+                <a href="https://github.com/Lumberj3ck/" class="hover:underline me-4 md:me-6 footer_link">Github</a>
+            </li>
+            <li>
+                <a href="https://www.linkedin.com/in/lumberj3ck/" class="hover:underline footer_link">LinkedIn</a>
             </li>
         </ul>
     </div>

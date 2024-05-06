@@ -2,12 +2,11 @@
 title = 'Python Mutations'
 date = 2024-05-02T11:36:52+02:00
 draft = false
-summary = 'Understand mutability in Python. Learn how variables can impact each other and how to manage these changes for predictable code. Covers lists, dictionaries, strings, and more.'
+summary = " Understand mutability in Python. Learn how variables can impact each other and how to manage these changes for predictable code. Covers lists, dictionaries, strings, and more."
 +++
 
 
-Have you ever encountered unexpected results in your Python code when variables seemed to change in tandem? This article delves into the concepts of mutability and how changes in one variable can sometimes propagate to others. We'll explain why this behavior occurs and how to manage it effectively.  
-
+Have you ever encountered unexpected results in your Python code when variables seemed to change in tandem? This article delves into the concepts of mutability and how changes in one variable can sometimes propagate to others. We'll explain why this behavior occurs and how to manage it effectively.
 Let's explore this with a simple example:
 {{< highlight python "linenos=table,hl_lines=,linenostart=1" >}}
 numbers = [2, 1, 3, 4, 7]

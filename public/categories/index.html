@@ -8,11 +8,12 @@
 
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/syntax.css">
+    <meta property="og:type" content="article">
 	 <meta name="description" content="Explore my insightful blog  Discover the latest articles, tips, and tutorials to help you achieve your goals."> 
 	<meta name="author" content="Lumberj3ck">
 </head>
 <body>
-<header style="padding-top: 30px;">
+<header class="navbar-padding">
     <a href="/" class="logo" style="color: unset">Lumberj3ck</a>
     <input type="checkbox" id="nav_check" hidden>
     <nav>
@@ -36,6 +37,14 @@
     <style>
 * {
     box-sizing: border-box;
+}
+.navbar-padding{
+    padding-top: 20px;
+}
+@media (min-width: 768px) {
+    .navbar-padding{
+        padding-top: 30px;
+    } 
 }
 
 .nav-link {
@@ -69,8 +78,8 @@ header {
 header.hide {
   transform: translateY(-100%);
 }
-header .logo {
-    font-size: 30px;
+header .logo    {
+    font-size: 20px;
     text-transform: uppercase;
 }
 header nav ul {
@@ -113,7 +122,7 @@ header nav ul li a {
         background: #fff;
         padding: 30px;
         transition: 0.3s;
-        height: 1000px;
+        height: 9000px;
     }
     header #nav_check:checked ~ nav {
         left: 0;
@@ -154,31 +163,55 @@ window.addEventListener("scroll", () => {
   
   <br/>
   <h2>
-  <a href="/posts/new-post/" class="link">New post</a>
+  <a href="/posts/uint-and-int/" class="link">Uint and Int</a>
+  </h2>
+    <div class="dateTime">
+    <strong>Published</strong>
+    <time>2024-05-06</time >
+    </div>
+  <div>
+   
+  <a href="/posts/uint-and-int/">Read more...</a>
+    </div>
+  
+  <br/>
+  <h2>
+  <a href="/posts/binary-numbers/" class="link">Binary Numbers</a>
+  </h2>
+    <div class="dateTime">
+    <strong>Published</strong>
+    <time>2024-05-06</time >
+    </div>
+  <div>
+   
+  <a href="/posts/binary-numbers/">Read more...</a>
+    </div>
+  
+  <br/>
+  <h2>
+  <a href="/posts/python-scopes/" class="link">Python Scope</a>
+  </h2>
+    <div class="dateTime">
+    <strong>Published</strong>
+    <time>2024-05-06</time >
+    </div>
+  <div>
+  Learn how Python handles variables in different scopes. Avoid errors and write predictable code by understanding how functions access and modify variables. 
+  <a href="/posts/python-scopes/">Read more...</a>
+    </div>
+  
+  <br/>
+  <h2>
+  <a href="/posts/python-mutations/" class="link">Python Mutations</a>
   </h2>
     <div class="dateTime">
     <strong>Published</strong>
     <time>2024-05-02</time >
     </div>
   <div>
-  Set is muttable cause we have methods like add or remove while frozenset is not. You can check this by calling dir from object and if there is some methods which mutate state it is mutable data type. 
-  <a href="/posts/new-post/">Read more...</a>
+   Understand mutability in Python. Learn how variables can impact each other and how to manage these changes for predictable code. Covers lists, dictionaries, strings, and more. 
+  <a href="/posts/python-mutations/">Read more...</a>
     </div>
-  <br />
-  
-  <br/>
-  <h2>
-  <a href="/posts/python-generics1/" class="link">Python Variables</a>
-  </h2>
-    <div class="dateTime">
-    <strong>Published</strong>
-    <time>2022-05-04</time >
-    </div>
-  <div>
-  Set is muttable cause we have methods like add or remove while frozenset is not. You can check this by calling dir from object and if there is some methods which mutate state it is mutable data type. 
-  <a href="/posts/python-generics1/">Read more...</a>
-    </div>
-  <br />
   
   <br />
 </div>
@@ -193,13 +226,13 @@ window.addEventListener("scroll", () => {
         </span>
         <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0" style=" list-style: none; margin: 0; padding: 0">
             <li>
-                <a href="/" class="hover:underline me-4 md:me-6 footer_link">Home</a>
-            </li>
-            <li>
                 <a href="https://opensource.org/license/MIT" class="hover:underline me-4 md:me-6 footer_link">Licensing</a>
             </li>
             <li>
-                <a href="/about" class="hover:underline footer_link">About</a>
+                <a href="https://github.com/Lumberj3ck/" class="hover:underline me-4 md:me-6 footer_link">Github</a>
+            </li>
+            <li>
+                <a href="https://www.linkedin.com/in/lumberj3ck/" class="hover:underline footer_link">LinkedIn</a>
             </li>
         </ul>
     </div>
