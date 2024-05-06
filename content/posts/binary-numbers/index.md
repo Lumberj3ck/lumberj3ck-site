@@ -1,6 +1,6 @@
 +++
 title = 'Binary Numbers'
-date = 2024-05-06T12:44:25+02:00
+date = 2024-05-01T12:44:25+02:00
 draft = false
 summary = 'Discover how a series of simple 0s and 1s form the backbone of digital calculations. This article breaks down binary representation, shows how to translate it into familiar numbers, and explores the fascinating concept of bit shifting for efficient manipulation within Go programs.'
 +++
