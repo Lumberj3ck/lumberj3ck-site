@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {{ block "title" . }}<title>{{ .Title }}</title>{{ end }}
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/syntax.css">
+    <link rel="stylesheet" href="./public/css/style.css">
+    <link rel="stylesheet" href="./public/css/syntax.css">
     <meta property="og:type" content="article">
 	{{ block "meta" . }} <meta name="description" content="{{ .Site.Params.description }}"> {{ end }}
 	{{ block "meta-author" . }}<meta name="author" content="{{ .Site.Params.author }}">{{ end }}
