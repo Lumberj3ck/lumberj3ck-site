@@ -7,6 +7,10 @@
     <title>Binary Numbers</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/favicons/site.webmanifest">
     <meta property="og:type" content="article">
      <meta name="description" content="Discover how a series of simple 0s and 1s form the backbone of digital calculations. This article breaks down binary representation, shows how to translate it into familiar numbers, and explores the fascinating concept of bit shifting for efficient manipulation within Go programs."> 
     
@@ -187,14 +191,21 @@ It means if this power of two is present inside of our number or not.</p>
 32 is <strong>2</strong>^5<br>
 8 is <strong>2</strong>^3<br>
 2 is <strong>2</strong>^1</p>
-<ul>
-<li>The first right number in binary stands for 2 to power of 0</li>
-<li>The second right number in binary stands for 2 to power of 1   <strong>&hellip;</strong></li>
-</ul>
+<p>Starting from the rightmost digit, the weights are: 2^0, 2^1, 2^2, 2^3, 2^4, and so on.
+The first right number in binary stands for 2 to power of 0<br>
+The second right number in binary stands for 2 to power of 1   <strong>&hellip;</strong></p>
 <p>In our example we don&rsquo;t need 2^0 we need 2^1 this is second digit in binary number, but we don&rsquo;t skip the first digit we just set it as 0.
-At this moment we have: 10</p>
-<p>There also some binary operators
-<strong>Shifting:</strong>
+At this moment we have: <span style="color: #A82255">
+    '00000010' 
+</span>. Then let&rsquo;s fill in third and fifth digits: <span style="color: #A82255">
+    '00101010' 
+</span>.</p>
+<p>If we want get normal number out of binary (&lsquo;00101010&rsquo;):<br>
+In this case, our weights will be: 2^0, 2^1, 2^2, 2^3, 2^4, and 2^5 (though the leftmost two digits are 0 and won&rsquo;t contribute).
+Multiply each digit by its weight:
+<strong>2^1 + 2^3 + 2^5 = 42</strong></p>
+<h2 id="binary-operators">Binary operators</h2>
+<p><strong>Shifting:</strong>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -216,8 +227,27 @@ At this moment we have: 10</p>
 </span></span><span class="line"><span class="cl"><span class="nb">pow</span> <span class="o">=</span> <span class="nb">pow</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span> </span></span></code></pre></td></tr></table>
 </div>
 </div>
-<p>So shifting <strong>1</strong> means that we shift it to some power of two
+<p>Because <strong>1</strong> in binary is 2^0 or &lsquo;00000001&rsquo;. If we shift one to left we will increase power of two. <strong>For example:</strong><br>
+If we shift to the left by one (<span style="color: #A82255">
+    << 1 
+</span>): &lsquo;00000010&rsquo;, We will get 2^1. If we shift by 2 (<span style="color: #A82255">
+    << 2 
+</span>): &lsquo;0000100&rsquo;, We will get 2^2.
+Shifting <strong>1</strong> means that we shift it to some power of two
 for example if we shift 1 by 2 it means shift to 4</p>
+<h2 id="use-case">Use case</h2>
+<p>We can use binary operators for flags. For example, if in our application we will have following permissions:</p>
+<ol>
+<li>permission to write</li>
+<li>permission to read</li>
+<li>permission to execute</li>
+<li>permission to update users</li>
+</ol>
+<p>We can say that permission to write would be first digit from the right, permission for read would be second digit from the right. If user would have this permission then we set 1, if not 0. This user would have all permissions <span style="color: #A82255">
+    '00001111' 
+</span>. This user will have everything but execute, <span style="color: #A82255">
+    '00001101'
+</span>.</p>
 <p>Based on this Go has <a href="/posts/uint-and-int">Uint and Int</a> types</p>
 
     </div>

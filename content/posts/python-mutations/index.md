@@ -1,6 +1,6 @@
 +++
 title = 'Python Mutations'
-date = 2024-05-02T11:36:52+02:00
+date = 2024-05-05T11:36:52+02:00
 draft = false
 summary = " Understand mutability in Python. Learn how variables can impact each other and how to manage these changes for predictable code. Covers lists, dictionaries, strings, and more."
 +++

@@ -6,12 +6,19 @@
     <description>Recent content on Lumberj3ck website</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 06 May 2024 11:36:52 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 05 May 2024 11:36:52 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python Mutations</title>
+      <link>http://localhost:1313/posts/python-mutations/</link>
+      <pubDate>Sun, 05 May 2024 11:36:52 +0200</pubDate>
+      <guid>http://localhost:1313/posts/python-mutations/</guid>
+      <description>Understand mutability in Python. Learn how variables can impact each other and how to manage these changes for predictable code. Covers lists, dictionaries, strings, and more.</description>
+    </item>
     <item>
       <title>Python Scope</title>
       <link>http://localhost:1313/posts/python-scopes/</link>
-      <pubDate>Mon, 06 May 2024 11:36:52 +0200</pubDate>
+      <pubDate>Fri, 03 May 2024 11:36:52 +0200</pubDate>
       <guid>http://localhost:1313/posts/python-scopes/</guid>
       <description>Learn how Python handles variables in different scopes. Avoid errors and write predictable code by understanding how functions access and modify variables.</description>
     </item>
@@ -21,13 +28,6 @@
       <pubDate>Thu, 02 May 2024 12:43:46 +0200</pubDate>
       <guid>http://localhost:1313/about/</guid>
       <description>Hi there! I&amp;rsquo;m Alan, a software engineering student with a knack for building things and a burning passion for innovative tech. This website is a product of my current dive into the world of Go. As I explore this language, I wanted to create a space to track my own progress, share my learnings, and hopefully, benefit other Go enthusiasts just like me on their own journeys.&#xA;I&amp;rsquo;m not just a learner – I&amp;rsquo;m a doer, absolutely buzzing with ideas!</description>
-    </item>
-    <item>
-      <title>Python Mutations</title>
-      <link>http://localhost:1313/posts/python-mutations/</link>
-      <pubDate>Thu, 02 May 2024 11:36:52 +0200</pubDate>
-      <guid>http://localhost:1313/posts/python-mutations/</guid>
-      <description>Understand mutability in Python. Learn how variables can impact each other and how to manage these changes for predictable code. Covers lists, dictionaries, strings, and more.</description>
     </item>
     <item>
       <title>Uint and Int</title>

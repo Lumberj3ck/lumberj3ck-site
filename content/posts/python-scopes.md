@@ -1,6 +1,6 @@
 +++
 title = 'Python Scope'
-date = 2024-05-06T11:36:52+02:00
+date = 2024-05-03T11:36:52+02:00
 draft = false
 summary = "Learn how Python handles variables in different scopes. Avoid errors and write predictable code by understanding how functions access and modify variables."
 +++
