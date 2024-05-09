@@ -4,7 +4,7 @@ date = 2024-05-02T12:43:46+02:00
 draft = false
 +++
 
-{{< figure src="photo1.png" style="min-width: 250px; max-width:250px; margin: 0" width="100%">}}
+{{< figure src="photo1.png" style="min-width: 250px; max-width:250px; margin: 0" width="80%">}}
 
 Hi there! I'm Alan, a software engineering student with a knack for building things and a burning passion for innovative tech. This website is a product of my current dive into the world of **Go**. As I explore this language, I wanted to create a space to track my own progress, share my learnings, and hopefully, benefit other Go enthusiasts just like me on their own journeys.
  
