@@ -2,104 +2,111 @@
 title = 'Go Packages'
 date = 2024-05-09T10:49:00+02:00
 draft = false
-summary = "Discover how Go's package system elegantly simplifies your code structure.  Learn how files sharing the same package name within a directory can effortlessly access each other's variables, functions, and types. This promotes streamlined code and reduces the need for complex import statements."  
+summary = "Discover how Go's package system elegantly simplifies your code structure. Learn how files sharing the same package name within a directory seamlessly access each other's variables, functions, and types, promoting streamlined code and reducing the need for complex import statements."
 +++
 
-In Go, packages provide a powerful way to organize and structure your code. One key feature is that files within the same package can directly access each other's variables, functions, and types. This promotes seamless collaboration between different parts of your codebase. Let's see how this works in practice.  
+In Go, packages provide a powerful way to organize and structure your code. A key feature is that files within the same package have direct access to each other's variables, functions, and types. This promotes seamless collaboration between different parts of your codebase. Let's explore how this works in practice.
 
-If two files have same **package name** and they are in same directory they can access variables and names from each other names, e.g share names
-We can run this thing like so
-{{< highlight bash  >}}
-  go run *.go 
-{{< / highlight  >}}
+If two files share the same **package name** within the same directory, they can access each other's names, such as variables and functions. We can execute **package** using the following command:
 
-All the package name under the directory name is sharing all the name in all those files. 
+{{< highlight bash >}}
+  go run *.go
+{{< / highlight >}}
 
-{{< highlight bash  >}}
+All files within a directory sharing the same package name effectively {{< emphasize >}} share a namespace.{{< / emphasize >}}
+
+{{< highlight bash >}}
   ├── calculate
-  │   ├── solution_runner.go
-  │   └── types.go
-{{< / highlight  >}}
+  │   ├── solution_runner.go
+  │   └── types.go
+{{< / highlight >}}
 
-so if we import calculate we can use all names from both files solution_runner.go and types.go
+In this example, importing the calculate package allows us to use all the names defined in both **solution_runner.go** and **types.go**.
 
-{{< highlight bash  >}}
+## How to import a package 
+
+Let's assume we have the following folders structure. Here calculate  and eiler folders are go packages.  
+
+{{< highlight bash >}}
   ├── calculate
-  │   ├── solution_runner.go
-  │   └── types.go
+  │   ├── solution_runner.go
+  │   └── types.go
   ├── eiler
-  │   ├── eiler_10
-  │   │   └── eiler_10.go
-  │   ├── eiler_6
-  │   │   └── eiler_6.go
-  │   ├── eiler_7
-  │   │   └── eiler_7.go
-  │   ├── eiler_8
-  │   │   └── eiler_8.go
-  │   └── eiler_9
-  │       └── eiler_9.go
+  │   ├── eiler_10
+  │   │   └── eiler_10.go
+  │   ├── eiler_6
+  │   │   └── eiler_6.go
+  │   ├── eiler_7
+  │   │   └── eiler_7.go
+  │   ├── eiler_8
+  │   │   └── eiler_8.go
+  │   └── eiler_9
+  │       └── eiler_9.go
   └── go.mod
-{{< / highlight  >}}
+{{< / highlight >}}
 
-If we want to import inside of solution runner something from eiler we need to create for all of this things a go.mod file 
+To import names from the eiler package into solution_runner, we need to create a go.mod file for our project.
+
+{{< highlight bash >}}
+  go mod init my-package-name
+{{< / highlight >}}
+
+After running this command inside of folder we can see **go.mod** file
 
 {{< highlight go "linenos=table,hl_lines=,linenostart=1" >}}
-module learning_go/katas
+module my-package-name
 
 go 1.22.2
 {{< / highlight >}}
 
-Every path for imports should be relative to this path in go mod 
+All import paths should be relative to this path specified in go.mod.
 
 **File: calculate/solution_runner.go**
+
 {{< highlight go "linenos=table,hl_lines=,linenostart=1" >}}
 package main
 
 import "fmt"
-import so "learning_go/katas/eiler/eiler_6"
+import so "my-package-name/eiler/eiler_6"
 
-
-func main(){
-    fmt.Println(so.Solution(2000_000))
-    // fmt.Println(randomNumber())
+func main() {
+  fmt.Println(so.Solution(2000_000))
 }
 {{< / highlight >}}
 
-Doesn't matter where the main file which imports all those modules is located, matters only path for directory which we import
-if for example we have a package eiler_10 all the files inside of this directory can have shared variables and object names  
+The location of the main file importing these modules doesn't matter; only the path to the imported directory is important. For instance, if we have a package named **eiler_10**, all files within that directory can share variables and object names.
 
 **File: eiler/eiler_6/eiler_6.go**
+
 {{< highlight go "linenos=table,hl_lines=,linenostart=1" >}}
 package eiler_6
 
 import "math"
-// import "fmt"
 
-func Solution(n Element) int{
-    sum_of_quad := float64(0)
-    sum_of_numbers := Element(0)
-    for i := Element(1); i <= n; i++{
-        sum_of_quad += math.Pow(float64(i), 2)  
-        sum_of_numbers += i
-    }
-    quad_of_sum := math.Pow(float64(sum_of_numbers), 2)
-    return int(quad_of_sum - sum_of_quad)
+func Solution(n Element) int {
+  sum_of_quad := float64(0)
+  sum_of_numbers := Element(0)
+  for i := Element(1); i <= n; i++ {
+    sum_of_quad += math.Pow(float64(i), 2)
+    sum_of_numbers += i
+  }
+  quad_of_sum := math.Pow(float64(sum_of_numbers), 2)
+  return int(quad_of_sum - sum_of_quad)
 }
 {{< / highlight >}}
 
 **File: eiler/eiler_6/types_eiler_6.go**
+
 {{< highlight go "linenos=table,hl_lines=,linenostart=1" >}}
 package eiler_6
 
-
 type Element int
-	
+
 {{< / highlight >}}
 
-**Element** type is used inside of  **eiler_6**.**go** and we import **eiler_6** package inside of main function we don't see the error that **Element** type is not defined.  Because it imported as a package.
+The Element type, defined in **types_eiler_6.go**, is used within **eiler_6.go**. When we import the **eiler_6** package into our main function, we don't encounter an error about Element being undefined. This is because it's imported as part of the package.
 
-And we also can run everything as a package, and if for example some main package has types which 
-are defined in another file inside of main package we can do so:
+We can also run everything as a package. If our main package has types defined in another file within that package, we can execute it like so:
 
 {{< highlight bash >}}
   go run .
@@ -107,23 +114,23 @@ are defined in another file inside of main package we can do so:
   go run main.go
 {{< / highlight >}}
 
+If we attempt to run only one file from the package, we'll get an error indicating that an imported name is undefined.
 
-If we instead will run only one file out of this package we will get an error that imported name is undefined.
-
-## How to use local modules inside of other modules
+## How to Use Local Modules Inside of Other Modules
 Let's create a module:
+
 {{< highlight bash >}}
-  mkdir mymodule 
+  mkdir mymodule
   cd mymodule
 {{< / highlight >}}
 
-Inside of math_module let's create go mod file, this will mark for go that this directory is a module. 
+Inside mymodule, let's create a go.mod file to mark this directory as a module for Go.
 
 {{< highlight bash >}}
   go mod init mymodule
 {{< / highlight >}}
 
-Inside of go.mod
+Within go.mod:
 
 {{< highlight go "linenos=table,hl_lines=,linenostart=1" >}}
 module mymodule
@@ -131,8 +138,9 @@ module mymodule
 go 1.22.2
 {{< / highlight >}}
 
-mymodule inside of "module mymodule" is alias which we can use when import this module. 
-Lets create package calc where we would declare some functionality. 
+{{< emphasize >}}mymodule{{< / emphasize >}} is an alias we can use when importing this module.
+
+Let's create inside of **mymodule** a package named calc to define some functionality.
 
 {{< highlight bash >}}
   mkdir calc
@@ -140,18 +148,17 @@ Lets create package calc where we would declare some functionality.
   touch math.go
 {{< / highlight >}}
 
-Inside of math.go
+Inside math.go:
 
 {{< highlight go "linenos=table,hl_lines=,linenostart=1" >}}
 package calc
 
-
-func AddInt(a, b int) int{
-    return a + b
+func AddInt(a, b int) int {
+  return a + b
 }
 {{< / highlight >}}
 
-For testing this module, let's create `main` module near `mymodule` 
+To test this module, let's create a main module alongside mymodule.
 
 {{< highlight bash >}}
   cd ../..
@@ -161,72 +168,90 @@ For testing this module, let's create `main` module near `mymodule`
   touch main.go
 {{< / highlight >}}
 
-Inside of main.go
+After all we'll have the following folders structure:
+{{< highlight bash >}}
+  ├── main
+  │   ├── go.mod
+  │   ├── main.go
+  │   └── utils.go
+  └── mymodule
+      ├── calc
+      │   └── math.go
+      └── go.mod
+{{< / highlight >}}
+
+
+Inside main.go:
+
 {{< highlight go "linenos=table,hl_lines=,linenostart=1" >}}
 package main
 
 import (
-    "fmt"
-    "mymodule/calc"
+  "fmt"
+  "mymodule/calc"
 )
 
-
-func main(){
-    fmt.Println(calc.AddInt(1, 2))
+func main() {
+  fmt.Println(calc.AddInt(1, 2))
 }
 {{< / highlight >}}
 
-Try to run and get an error 
+
+**Inside of main directory**
 {{< highlight bash >}}
-  # Inside of main directory
   go run .
 {{< / highlight >}}
 
+If we try to run this, we'll get an error:
+
 {{< highlight bash >}}
-  package mymodule/calc  is not in std (/usr/local/go/src/mymodule/calc)
+  package mymodule/calc is not in GOROOT (/usr/local/go/src/mymodule/calc)
 {{< / highlight >}}
 
 {{< blockquote >}}
- The problem here, that we didn't declare anything inside of `main/go.mod` about where go should search for this module `mymodule`.  Go tried to search inside of GOROOT, when didn't found saw that name of our module doesn't look like url and emited following error. 
+This error occurs because we haven't specified where Go should find the mymodule module within main/go.mod. Go attempted to search in GOROOT but couldn't find it and, since the module name doesn't resemble a URL, emitted this error.
 {{< / blockquote >}}
 
-We need to explicitly say to go compiler where is `mymodule` located. If module is only on our local machine, we need to use `replace` directive. 
+We need to explicitly tell the Go compiler where mymodule is located. If the module is only on our local machine, we use the replace directive.
 
 {{< highlight go "linenos=table,hl_lines=,linenostart=1" >}}
 module main
 
 go 1.22.2
 
-// location of mymodule relatively to main module
+// location of mymodule relative to the main module
 replace mymodule => ../mymodule
-{{<  / highlight >}}
+{{< / highlight >}}
 
-Let's test one more time
+Let's test again:
 
-**Inside of main directory**
-
-{{<   highlight bash >}}
-  go run .
-{{<  / highlight >}}
+Inside the main directory
 
 {{< highlight bash >}}
-  package mymodule/calc  is not in std (/usr/local/go/src/mymodule/cal)
+  go run  .
+{{< / highlight >}}
+
+
+We'll get almost equivalent error, but now we just need to get the module:
+
+{{< highlight bash >}}
+  package mymodule/calc is not in GOROOT (/usr/local/go/src/mymodule/cal)
   module mymodule provides package mymodule/calc and is replaced but not required; to add it:
   go get mymodule
 {{< / highlight >}}
 
-Let's run the command:
+Let's run the suggested command:
 
-{{<   highlight bash >}}
+{{< highlight bash >}}
   go get mymodule
-{{<  / highlight >}}
+{{< / highlight >}}
 
-Inside of main/go.mod we got new string: 
-{{<   highlight bash >}}
-  require mymodule v0.0.0-00010101000000-000000000000 // indirect 
-{{<  / highlight >}}
+Inside main/go.mod, we now have a new line:
 
-It points to which exactly version of this module go compiler will use for build.
+{{< highlight bash >}}
+  require mymodule v0.0.0-00010101000000-000000000000 // indirect
+{{< / highlight >}}
 
-Run the main.go one more time. Hooray, now it's working!
+This indicates the specific version of the mymodule module that the Go compiler will use for building.
 
+Running main.go one more time should now work successfully!
