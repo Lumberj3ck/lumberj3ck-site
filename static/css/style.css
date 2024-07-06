@@ -108,11 +108,15 @@ pre{
     padding: var(--code-padding) 0 var(--code-padding) var(--code-padding);
 }
 
+.lntable td:first-child pre code span{
+    background-color: unset !important;
+}
+
 .highlight pre {
     padding: var(--code-padding) var(--code-padding) var(--code-padding) 0;
 }
 
-@media (max-width: 768px) { 
+/* @media (max-width: 768px) {  */
     h1{
         font-size: 25px;
     }
@@ -122,4 +126,4 @@ pre{
     overflow-x: auto; 
     /* white-space: pre;  */
   }
-}
+/* } */
