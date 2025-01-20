@@ -1,8 +1,105 @@
+{{ $overlayJS := `
+document.addEventListener('DOMContentLoaded', function() {
+    // Create overlay elements once when the page loads
+    const overlay = document.createElement('div');
+    overlay.className = 'figure-overlay';
+    overlay.innerHTML = '<div class="overlay-content"><img><button class="close-button">&times;</button></div>';
+    document.body.appendChild(overlay);
+
+    const overlayImg = overlay.querySelector('img');
+    const closeButton = overlay.querySelector('.close-button');
+    let isOverlayOpen = false;
+
+    // Add click handler to all figure images
+    document.querySelectorAll('figure img').forEach(img => {
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', function(e) {
+            if (isOverlayOpen) return; // Prevent opening new overlay if one is already open
+            e.preventDefault();
+            e.stopPropagation(); // Prevent event bubbling
+            overlayImg.src = this.src;
+            overlayImg.alt = this.alt;
+            overlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            isOverlayOpen = true;
+        });
+    });
+
+    // Close overlay when clicking close button or outside the image
+    closeButton.addEventListener('click', closeOverlay);
+    overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) {
+            closeOverlay();
+        }
+    });
+
+    // Close overlay when pressing Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeOverlay();
+        }
+    });
+
+    function closeOverlay() {
+        document.querySelectorAll('.figure-overlay').forEach(overlay =>{
+          document.body.style.zoom = 1.0
+
+          overlay.style.display = 'none';
+          document.body.style.overflow = 'auto';
+          isOverlayOpen = false;
+        })
+
+    }
+});
+` }}
+
+{{ $overlayCSS := `
+.figure-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.overlay-content img {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+}
+
+.close-button {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+.close-button:hover {
+    color: #ccc;
+}
+` }}
+
 <figure{{ with .Get "style" | safeCSS }} style="{{ . }}"{{ end }}>
   {{- if .Get "link" -}}
     <a href="{{ .Get "link" }}"{{ with .Get "target" }} target="{{ . }}"{{ end }}{{ with .Get "rel" }} rel="{{ . }}"{{ end }}>
   {{- end -}}
-
   {{- $u := urls.Parse (.Get "src") -}}
   {{- $src := $u.String -}}
   {{- if not $u.IsAbs -}}
@@ -10,16 +107,15 @@
       {{- $src = .RelPermalink -}}
     {{- end -}}
   {{- end -}}
-
   <img src="{{ $src }}"
     {{- if or (.Get "alt") (.Get "caption") }}
     alt="{{ with .Get "alt" }}{{ . }}{{ else }}{{ .Get "caption" | markdownify| plainify }}{{ end }}"
     {{- end -}}
-    srcset="{{ with .Get "srcset" }}{{ . }}{{ end }}"
+    {{- with .Get "srcset" }} srcset="{{ . }}"{{ end -}}
     {{- with .Get "width" }} width="{{ . }}"{{ end -}}
     {{- with .Get "height" }} height="{{ . }}"{{ end -}}
     {{- with .Get "loading" }} loading="{{ . }}"{{ end -}}
-  ><!-- Closing img tag -->
+  >
   {{- if .Get "link" }}</a>{{ end -}}
   {{- if or (or (.Get "title") (.Get "caption")) (.Get "attr") -}}
     <figcaption>
@@ -37,3 +133,7 @@
     </figcaption>
   {{- end }}
 </figure>
+
+<!-- Add the CSS and JavaScript to the page -->
+<style>{{ $overlayCSS | safeCSS }}</style>
+<script>{{ $overlayJS | safeJS }}</script>

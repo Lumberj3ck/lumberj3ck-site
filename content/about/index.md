@@ -8,7 +8,7 @@ t = false
 Hi there! I'm Alan, a software engineering student with a knack for building things and a burning passion for innovative tech. This website is a product of my current dive into the world of **Go**. As I explore this language, I wanted to create a space to track my own progress, share my learnings, and hopefully, benefit other Go enthusiasts just like me on their own journeys.
  
 
-I'm not just a learner – I'm a doer, absolutely buzzing with ideas! I've explored **Python**, **Javascript**. I'm currently working on customizeable *Valentine postcard website* and I've also built a couple of other project and continue maintain those.  Want more details on that? Check the [link](https://www.my-valentine-postcard.site/). 
+I'm not just a learner – I'm a doer, absolutely buzzing with ideas! I've explored **Python**, **Javascript**. I'm currently working on customizeable *Valentine postcard website* and I've also built a couple of other project and continue maintain those.  Want more details on that? Check the [link](https://www.postcard-gift.site/). 
 
 You won't find me sitting still. I thrive on challenges, whether it's wrestling with code or pushing my limits at the gym. When I'm not building software, I'm probably blasting some Linkin Park to match my energy!  
 
