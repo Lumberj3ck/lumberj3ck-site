@@ -5,7 +5,7 @@ draft = false
 summary = 'Discover how a series of simple 0s and 1s form the backbone of digital calculations. This article breaks down binary representation, shows how to translate it into familiar numbers, and explores the fascinating concept of bit shifting for efficient manipulation within Go programs.'
 +++
 
-{{< figure src="image.png" srcset="medium.webp 640w, large.webp 1280w" style="min-width: 250px; max-width:400px" width="100%">}}
+{{< figure src="medium.webp" srcset="medium.webp 640w, large.webp 1280w" style="min-width: 250px; max-width:400px" width="100%">}}
 
 So basically each 1 or 0 in binary number means the power of 2 
 
