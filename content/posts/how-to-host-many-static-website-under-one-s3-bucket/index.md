@@ -166,7 +166,12 @@ export const handler = async (event) => {
 
 If you are following guide change the hardcoded s3 bucket name in your lambda. When you created your function which modifies request, we are almost done and ready to deploy function.
 
-Now go to lambda actions tab 
+Now go to lambda actions tab and press {{< emphasize >}}Deploy to Lambda@Edge{{< /emphasize >}}
 
 {{< figure src="lambda-actions.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="lambda actions">}}
 
+Choose your cloudfront distribution and don't forget to set correct cloudfront event when lambda is going to be triggered.
+
+{{< figure src="deploy-to-lambda-edge.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="deploy-to-lambda-edge">}}
+
+After deploying code, everything must be working and our two different domains must be forwarded to the correct folder.
