@@ -54,8 +54,11 @@ Now, upload your two static websites into the S3 bucket, ensuring that the folde
 Next, create an SSL certificate in AWS Certificate Manager for your domain. This ensures secure HTTPS access to your CloudFront distribution.
 
 {{< blockquote >}}
-**Note**: A single certificate can include multiple domains, which is useful if you’re hosting several subdomains.
+**Note**: A single certificate can include multiple domains, which is useful if you’re hosting several subdomains.  
 {{< /blockquote >}}
+
+{{< line >}}
+
 
 {{< figure src="acm-domains.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="ACM domains">}}
 

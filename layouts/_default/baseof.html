@@ -11,6 +11,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
     <link rel="manifest" href="/favicons/site.webmanifest">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/theme-toggles@4.10.1/css/classic.min.css">
     <meta name="google-site-verification" content="dmsFQkrmG_OjxZ2hjjehvhfbElY-IZl04xtDhERf6GE" />
     <meta property="og:type" content="article">
     {{ block "meta" . }}
@@ -28,6 +29,31 @@
     </div>
     <!-- </div> -->
     {{ partial "footer" . }}
+    <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const darkModeButton = document.getElementById('dark-mode-toggle');
+        const toggleDarkMode = () => {
+            // Toggle the dark mode class on the body
+            document.body.classList.toggle('dark-mode');
+            darkModeButton.classList.toggle('theme-toggle--toggled');
+
+            // Save the current dark mode state in local storage
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
+        };
+
+        // Retrieve dark mode state from local storage on page load
+        const savedDarkMode = localStorage.getItem('darkMode');
+        if (savedDarkMode === 'enabled') {
+            document.body.classList.add('dark-mode');
+        }
+
+        if (darkModeButton) {
+            darkModeButton.addEventListener('click', toggleDarkMode);
+        }
+    });
+</script>
+
 
 </body>
 
