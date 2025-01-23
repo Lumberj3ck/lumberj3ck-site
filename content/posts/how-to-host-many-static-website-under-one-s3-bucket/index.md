@@ -1,7 +1,7 @@
 +++
 title = 'How to Host Many Static Website Under One S3 Bucket'
 date = 2024-11-03T00:26:30+01:00
-draft = true
+draft = false
 summary = 'This is how you can store several static websites under one s3 bucket accessing them via different subdomains.'
 +++
 
@@ -93,5 +93,80 @@ After we can safely create cloudfront distribution, it will generate for policy 
 
 ### S3 Bucket Policy
 
+This is how it looks like in my s3 bucket permissions tab.
+
 {{< figure src="s3-policy.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="s3-policy">}}
+
+Now when we are done with cloudfront and s3 bucket we need to go to the last, but no the least part of architecture Lambda@Edge.
+
+### Lambda@Edge
+
+Lambda Edge is basically default lambda which will be triggered on the special event on cloudfront distribution. When the request comes to cloudfront distribution, this lambda edge function is going to be called, we can specify at which event this function will be called, each event describes the information available for the lambda function, since we would need to mutate the request object and overwrite s3 bucket object path, it is extermely important.
+
+Since we are going to implement this function in javascript, the runtime must be Node.js, but you can implement function in any language.
+
+{{< figure src="lambda-function-creation.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="lambda-function-creation.png">}}
+
+By default aws lambda must have a permissions for logging to the **CloudWatch**, in my case I have had a problem with that and lambda couldn't create proper logs to the CloudWatch, so I created **new role** for lambda function. 
+
+The Lambda@Edge function code is bellow:
+
+{{< highlight js "linenos=table,hl_lines=,linenostart=1" >}}
+export const handler = async (event) => {
+    // here our handler accepts parameter --> event
+    const request = event.Records[0].cf.request;
+    // logs are accesible in AWS CloudWatch
+    console.log('Original request:', JSON.stringify(request, null, 2));
+    const headers = request.headers;
+    // Access the domain to which request has been made
+    const host = headers.host[0].value;
+    console.log('Host:', host);
+
+    // Extract the domain parts
+    const parts = host.split('.');
+    let subdomain, folderName;
+    
+    // Parsing s3 bucket folders correctly
+    if (parts.length > 2) {
+        subdomain = parts[0];
+        folderName = parts[1];
+    } else {
+        subdomain = '';
+        folderName = parts[0];
+    }
+
+    console.log('Subdomain:', subdomain);
+    console.log('Folder name:', folderName);
+
+    // Hardcoded name of S3 bucket
+    // Update!
+    const bucketName = 'valetine-postcard-websites';
+
+    // Modify the origin of request
+    request.origin = {
+        s3: {
+            authMethod: 'none',
+            domainName: `${bucketName}.s3.eu-central-1.amazonaws.com`,
+            path: ''
+        }
+    };
+
+    // Modify the URI to include the folder and subdomain path
+    if (request.uri === '/' || request.uri.endsWith('/')) {
+        request.uri = `/${folderName}/${subdomain}/index.html`;
+    } else {
+        request.uri = `/${folderName}/${subdomain}${request.uri}`;
+    }
+
+    console.log('Modified request:', JSON.stringify(request, null, 2));
+    // now request goes to the correct folder of our s3 
+    return request;
+};
+{{< /highlight >}}
+
+If you are following guide change the hardcoded s3 bucket name in your lambda. When you created your function which modifies request, we are almost done and ready to deploy function.
+
+Now go to lambda actions tab 
+
+{{< figure src="lambda-actions.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="lambda actions">}}
 
