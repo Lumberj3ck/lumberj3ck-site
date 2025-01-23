@@ -1,115 +1,104 @@
 +++
-title = 'How to Host Many Static Website Under One S3 Bucket'
+title = "How to Host Multiple Static Websites Under One S3 Bucket"
 date = 2024-11-03T00:26:30+01:00
 draft = false
-summary = 'This is how you can store several static websites under one s3 bucket accessing them via different subdomains.'
+summary = "Article explains how to host multiple static websites under a single AWS S3 bucket, accessible via different subdomains. It uses AWS services like S3, CloudFront, Lambda@Edge, and ACM (AWS Certificate Manager) to achieve this setup."
 +++
 
+Hello and welcome to my blog! Today, I’ll guide you through the process of hosting multiple static websites on different subdomains under a single S3 bucket. I implemented this for my postcard [project](https://www.postcard-gift.site/), and I’m excited to share the steps with you.
 
-Hello and welcome to my blog, today I'm going to tell you, how I have done uploading of static websites at different subdomains for my postcard [project](https://www.postcard-gift.site/). 
+Here’s the result we aim to achieve. The first website will be accessible at the subdomain **alan.postcard-gift.site**:
 
-This is the result we want to achieve at the end, the first website with subdomain **alan.postcard-gift.site**.
 {{< figure src="first-site-subdomain.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="First example of the website">}}
 
-And the second website with subdomain **lumberj3ck.postcard-gift.site**.  
+And the second website will be accessible at **lumberj3ck.postcard-gift.site**:
 
 {{< figure src="second-site-subdomain.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="Second example of the website">}}
 
-I had to find an easy way to store and publish many websites at the same place firstly I decided to move on with vercel API, but it didn't work out because I was afraid to quickly hit the limits of vercel api, at the end of the day vercel is a wrapper around aws, it would be cheaper to use aws ourselves without overheads, 
-especially when we don't have to build and package our website resourses thus don't even need most of the features of vercel.
+Initially, I considered using the Vercel API for this purpose. However, I realized it might not be suitable due to potential usage limits. Since Vercel is essentially a wrapper around AWS, I decided it would be more cost-effective to use AWS directly, eliminating overhead costs. Moreover, because our use case doesn’t require features like website building or resource packaging, AWS is the ideal solution.
+
 ### Architecture
 
-Schema of our architecture will look like this:
+The architecture for our setup will look like this:
 
-{{< figure src="lambdaS3.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="S3-and-lambda-edge-arhitecture">}}
+{{< figure src="lambdaS3.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="S3-and-Lambda-Edge architecture">}}
 
-The most magic is done by cloudfront and Lambda Edge function, which actually is responsible for the correct url recognition and pointing to the right s3 folder.
+The magic lies in the combination of CloudFront and a Lambda@Edge function, which ensures that each URL correctly maps to the corresponding S3 folder.
 
+### Steps to Set Up
 
-Let's dive deep into the process of setting up. First thing first we need to create S3 bucket. 
+#### 1. Create an S3 Bucket
 
-{{< figure src="create-bucket.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="create-bucket">}}
+First, create an S3 bucket without enabling public access. Since CloudFront will handle access to the bucket internally, there’s no need to make the bucket publicly accessible. 
 
-We need to create a default s3 bucket without any specific configuration and public access to bucket is don't needed, because cloudfront can access s3 bucket internally, bucket don't need to be publically accesible. Next we need to enable static website hosting inside of our bucket properties.
+{{< figure src="create-bucket.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="Create bucket">}}
 
+Next, enable **Static Website Hosting** in the bucket properties.
 
-{{< figure src="enable-static-website-hosting.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="enable-static-website-hosting">}}
+{{< figure src="enable-static-website-hosting.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="Enable static website hosting">}}
 
-The following options you need to enable:
+Configure the following options:
 
-{{< figure src="static-website-options.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="static-website-options">}}
+{{< figure src="static-website-options.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="Static website hosting options">}}
 
-Now we are ready to push our two pages to s3 bucket.
-
+Now, upload your two static websites into the S3 bucket, ensuring that the folder names match the desired subdomains.
 
 {{< blockquote >}}
-**Note**: Notice the folders name are the same as subdomain. **alan** folder is corresponds to the **alan.postcard-gift.site**, because that exactly we are going to understand where each request must be routed to.
+**Note**: Folder names should correspond to subdomains. For example, the folder **alan** matches the subdomain **alan.postcard-gift.site**.
+{{< /blockquote >}}
+
+{{< figure src="two-websites-in-s3.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="Two websites in S3">}}
+
+#### 2. Set Up AWS Certificate Manager
+
+Next, create an SSL certificate in AWS Certificate Manager for your domain. This ensures secure HTTPS access to your CloudFront distribution.
+
+{{< blockquote >}}
+**Note**: A single certificate can include multiple domains, which is useful if you’re hosting several subdomains.
+{{< /blockquote >}}
+
+{{< figure src="acm-domains.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="ACM domains">}}
+
+Add the generated CNAME records to your DNS provider to validate domain ownership. If your DNS provider doesn’t support this, you can use Cloudflare, as I did.
+{{< blockquote >}}
+**Note**: I had an isssue with **NameCheap** they didn't allow me to insert CNAME value from **AWS Certificate manager**, that's why I used **cloudflare** instead. The process of moving to manage your domain name in cloudflare is pretty straighforward.
+{{< / blockquote >}}
+
+{{< figure src="cloudflare-dns-settings.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="Cloudflare DNS settings">}}
+
+#### 3. Configure CloudFront
+
+Create a new CloudFront distribution with your S3 bucket as the origin. Use the bucket’s default endpoint instead of the static website hosting endpoint.
+Since we don't want to leave bucket public, we need to use {{<  emphasize >}}Origin Access Control{{< / emphasize >}} for origin access, aws will generate bucket policy which we must apply 
+
+{{< figure src="cloudfront-creation.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="CloudFront creation">}}
+
+Set the **Cache Policy** to **CachingOptimized**:
+
+{{< figure src="cache-policy-for-cloudfront.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="Cache policy for CloudFront">}}
+
+Add your subdomains as CNAMEs and select the SSL certificate created in AWS Certificate Manager.
+
+{{< figure src="distribution-alternative-names.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="Distribution alternative names">}}
+
+#### 4. Configure S3 Bucket Policy
+
+Update the S3 bucket policy with the one generated by CloudFront to allow access to the bucket.
+
+{{< figure src="s3-policy.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="S3 bucket policy">}}
+
+#### 5. Create a Lambda@Edge Function
+
+Finally, create a Lambda@Edge function to handle URL routing. This function modifies requests to point to the correct S3 folder based on the subdomain.
+
+{{< figure src="lambda-function-creation.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="Lambda function creation">}}
+
+{{< blockquote >}}
+By default aws lambda must have a permissions for logging to the **CloudWatch**, in my case I have had a problem with that and lambda couldn't create proper logs to the CloudWatch, so I created **new role** for lambda function. You can check permissions at the configuration tab of your lambda. 
 {{< / blockquote >}}
 
 
-{{< figure src="two-websites-in-s3.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="Second example of the website">}}
-
-### AWS Certificate manager
-
-Now we need to go to the AWS Certificate manager and create a certificate for domain,  which our cloudfront distribution will be accesible from.
-{{< blockquote >}}
-**Note**: In one certificate you can have multiple domains, that what we want in case if our cloudfront distribution has to be accesible from multiple domains. 
-{{< / blockquote >}}
-
-{{< figure src="acm-domains.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="acm-domains">}}
-
-Values which are generated to prove that this domain is owned by you must be pasted in your dns provider. 
-
-{{< blockquote >}}
-**Note**: I had an isssue with **NameCheap** they didn't allow me to insert CNAME value from **AWS Certificate manager**, that's why I used **cloudflare** instead. The process of moving to manage your domain name in cloudflare is pretty straighforward you can find a guide in youtube.
-{{< / blockquote >}}
-
-This is how is looks like in my cloudflare dns settings.
-
-{{< figure src="cloudflare-dns-settings.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="cloudflare-dns-settings">}}
-
-After that done we are ready to move on with cloudfront distribution.
-
-### Cloudfront
-
-We need to start with creating new cloudfront distribution, the origin of our distribution will be our s3 bucket, however we don't want to use the endpoint for serving s3 as a website and want to use default s3 bucket's endpoint.
-Also since we don't want to leave bucket public, we need to use second option for origin access, aws will generate bucket policy which must use. 
-
-{{< figure src="cloudfront-creation.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="cloudfront creation">}}
-
-Cache policy must be set to CachingOptimized.
-
-{{< figure src="cache-policy-for-cloudfront.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="cache-policy-for-cloudfront">}}
-
-Sine I want to make my distribution to be accesible from two following domains I added them as a CNAMES, you can keep one if you want to have one domain name.
-Inside of ssl certificate field you must select, certificate which we created inside of a [ACM](#aws-certificate-manager).
-If you decided to use two domains, ssl certificate must be covering both of them.
-
-{{< figure src="distribution-alternative-names.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="distribution-alternative-names">}}
-
-All of the other settings might be left at it's default state.
-
-After we can safely create cloudfront distribution, it will generate for policy for the s3 bucket, which we need to copy and paste into s3 bucket policy
-
-### S3 Bucket Policy
-
-This is how it looks like in my s3 bucket permissions tab.
-
-{{< figure src="s3-policy.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="s3-policy">}}
-
-Now when we are done with cloudfront and s3 bucket we need to go to the last, but no the least part of architecture Lambda@Edge.
-
-### Lambda@Edge
-
-Lambda Edge is basically default lambda which will be triggered on the special event on cloudfront distribution. When the request comes to cloudfront distribution, this lambda edge function is going to be called, we can specify at which event this function will be called, each event describes the information available for the lambda function, since we would need to mutate the request object and overwrite s3 bucket object path, it is extermely important.
-
-Since we are going to implement this function in javascript, the runtime must be Node.js, but you can implement function in any language.
-
-{{< figure src="lambda-function-creation.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="lambda-function-creation.png">}}
-
-By default aws lambda must have a permissions for logging to the **CloudWatch**, in my case I have had a problem with that and lambda couldn't create proper logs to the CloudWatch, so I created **new role** for lambda function. 
-
-The Lambda@Edge function code is bellow:
+Here’s the JavaScript code for the Lambda@Edge function:
 
 {{< highlight js "linenos=table,hl_lines=,linenostart=1" >}}
 export const handler = async (event) => {
@@ -164,14 +153,10 @@ export const handler = async (event) => {
 };
 {{< /highlight >}}
 
-If you are following guide change the hardcoded s3 bucket name in your lambda. When you created your function which modifies request, we are almost done and ready to deploy function.
+Deploy the function to Lambda@Edge and associate it with the appropriate CloudFront event you need to select {{< emphasize >}} Viewer request {{< / emphasize >}}.
 
-Now go to lambda actions tab and press {{< emphasize >}}Deploy to Lambda@Edge{{< /emphasize >}}
+{{< figure src="deploy-to-lambda-edge.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="Deploy to Lambda@Edge">}}
 
-{{< figure src="lambda-actions.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="lambda actions">}}
 
-Choose your cloudfront distribution and don't forget to set correct cloudfront event when lambda is going to be triggered.
-
-{{< figure src="deploy-to-lambda-edge.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="deploy-to-lambda-edge">}}
-
-After deploying code, everything must be working and our two different domains must be forwarded to the correct folder.
+### Conclusion
+Once everything is set up, your subdomains will correctly route to their respective folders in the S3 bucket. If you followed this guide step by step, you should now have a scalable and cost-effective way to host multiple static websites on AWS.
