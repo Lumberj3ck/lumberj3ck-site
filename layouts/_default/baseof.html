@@ -23,12 +23,12 @@
 <body>
     <!-- <div style="margin: 8px"> -->
     {{ partial "navbar" . }}
-    <div style="padding-top: 60px; min-height: 85vh; ">
+    <div class="page-detail" style="padding-top: 60px; min-height: 85vh; ">
         {{ block "main" . }}
         {{ end }}
+        {{ partial "footer" . }}
     </div>
     <!-- </div> -->
-    {{ partial "footer" . }}
     <script>
     document.addEventListener('DOMContentLoaded', (event) => {
         const darkModeButton = document.getElementById('dark-mode-toggle');

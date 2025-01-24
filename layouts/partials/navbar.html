@@ -17,7 +17,7 @@
                     <button id="dark-mode-toggle">Mode</button>
                 </li> -->
                 <li style="display: flex; align-items: center;">
-                    <button id="dark-mode-toggle" class="theme-toggle"  type="button" title="Toggle theme" aria-label="Toggle theme">
+                    <button style="margin: 0 10px; padding: 5px 0;" id="dark-mode-toggle" class="theme-toggle"  type="button" title="Toggle theme" aria-label="Toggle theme">
                         <svg xmlns="http://www.w3.org/2000/svg" style="color: var(--text-color);" aria-hidden="true" width="24px" 
                             fill="currentColor" stroke-linecap="round" class="theme-toggle__classic"
                             viewBox="0 0 32 32">
@@ -96,11 +96,12 @@
                 display: flex;
             }
 
+
             .nav-header nav ul li a {
+                margin: 0 10px;
                 display: inline-block;
                 color: var(--text-color);
                 padding: 5px 0;
-                margin: 0 10px;
                 border: 3px solid transparent;
                 text-transform: uppercase;
                 transition: 0.2s;
@@ -122,7 +123,7 @@
                 .hamburger {
                     display: block;
                 }
-
+        
                 .nav-header nav {
                     position: absolute;
                     width: 100%;
@@ -130,7 +131,6 @@
                     top: 70px;
                     width: 100%;
                     background: var(--bg-color);
-                    /* padding: 30px; */
                     padding-top: 30px;
                     transition: 0.3s;
                     height: 9000px;
@@ -139,6 +139,7 @@
                 .nav-header #nav_check:checked~nav {
                     left: 0;
                 }
+
 
                 .nav-header nav ul {
                     display: block;
@@ -164,6 +165,15 @@
             }
         </style>
         <script>
+                document.getElementById('nav_check').addEventListener('change', function() {
+                    if (this.checked) {
+                        document.body.style.overflowY = 'hidden';
+                    } else {
+                        document.body.style.overflowY = 'auto';
+                    }
+                });
+        </script>
+        <script>
             const header = document.querySelector(".nav-header");
             // Set the initial scroll position
             let lastScrollPosition = 0;
@@ -171,6 +181,7 @@
             window.addEventListener("scroll", () => {
                 // Get the current scroll position
                 let currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+		currentScrollPosition = currentScrollPosition < 0 ? 0 : currentScrollPosition 
 
                 if (currentScrollPosition - lastScrollPosition > 0) {
                     // If the scroll direction is down and the user has scrolled past the navbar, hide the navbar
