@@ -181,7 +181,7 @@
             window.addEventListener("scroll", () => {
                 // Get the current scroll position
                 let currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-		currentScrollPosition = currentScrollPosition < 0 ? 0 : currentScrollPosition 
+		        currentScrollPosition = currentScrollPosition < 0 ? 0 : currentScrollPosition 
 
                 if (currentScrollPosition - lastScrollPosition > 0) {
                     // If the scroll direction is down and the user has scrolled past the navbar, hide the navbar
