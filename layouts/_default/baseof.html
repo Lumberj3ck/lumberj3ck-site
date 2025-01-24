@@ -23,9 +23,11 @@
 <body>
     <!-- <div style="margin: 8px"> -->
     {{ partial "navbar" . }}
-    <div class="page-detail" style="padding-top: 60px; min-height: 85vh; ">
-        {{ block "main" . }}
-        {{ end }}
+    <div class="page-detail" style="padding-top: 60px;">
+        <div style="min-height: 75vh;">
+            {{ block "main" . }}
+            {{ end }}
+        </div>
         {{ partial "footer" . }}
     </div>
     <!-- </div> -->
