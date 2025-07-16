@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
   {{- $src := $u.String -}}
   {{- if not $u.IsAbs -}}
     {{- with or (.Page.Resources.Get $u.Path) (resources.Get $u.Path) -}}
-      {{- $src = .RelPermalink -}}
+      {{- $src = .Permalink -}}
     {{- end -}}
   {{- end -}}
   <img src="{{ $src }}"
