@@ -1,7 +1,6 @@
 baseURL = 'https://example.org/'
 title = 'Alan Yuldashev'
 languageCode = 'en-us'
-theme = 'hello-friend-ng'
 PygmentsCodeFences = true
 PygmentsStyle = 'monokai'
 
@@ -54,7 +53,8 @@ disableHugoGeneratorInject = false
   dateformNumTime = "2006-01-02 15:04"
   description = "Explore my insightful blog. Discover the latest articles, tips, and tutorials to help you achieve your goals."
   homeSubtitle = "Welcome to my blog! Dive into coding adventures, tech tips, and personal projects."
-  enableGlobalLanguageMenu = true
+  enableGlobalLanguageMenu = false
+  enableThemeToggle = true
   customCSS = ["/css/style.css"]
   customJS  = []
   justifyContent = false
