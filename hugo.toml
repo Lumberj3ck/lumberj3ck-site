@@ -1,10 +1,111 @@
 baseURL = 'https://example.org/'
+title = 'Alan Yuldashev'
 languageCode = 'en-us'
-title = 'Lumberj3ck website'
-dateFmt = '15:04:05 2006-01-02'
-pygmentsUseClasses = true
-pygmentsCodefences = true
-goldmark.renderer.unsafe = true 
+theme = 'hello-friend-ng'
+PygmentsCodeFences = true
+PygmentsStyle = 'monokai'
+
+copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."
+
+archetypeDir = "archetypes"
+contentDir   = "content"
+dataDir      = "data"
+layoutDir    = "layouts"
+publishDir   = "public"
+
+buildDrafts  = false
+buildFuture  = false
+buildExpired = false
+canonifyURLs = true
+
+enableRobotsTXT = true
+enableGitInfo   = false
+enableEmoji     = true
+enableMissingTranslationPlaceholders = false
+disableRSS     = false
+disableSitemap = false
+disable404     = false
+disableHugoGeneratorInject = false
+
+[pagination]
+  disableAliases = false
+  pagerSize = 20
+  path = 'page'
+
+[services]
+  [services.rss]
+      limit = 42
+
+[permalinks]
+  posts = "/posts/:year/:month/:title/"
+
+[blackfriday]
+  hrefTargetBlank = true
+
+[taxonomies]
+  tag      = "tags"
+  category = "categories"
+  series   = "series"
+
 [params]
-  description = "Explore my insightful blog  Discover the latest articles, tips, and tutorials to help you achieve your goals." 
-  author = 'Lumberj3ck'
+  dateform        = "Jan 2, 2006"
+  dateformShort   = "Jan 2"
+  dateformNum     = "2006-01-02"
+  dateformNumTime = "2006-01-02 15:04"
+  description = "Explore my insightful blog. Discover the latest articles, tips, and tutorials to help you achieve your goals."
+  homeSubtitle = "Welcome to my blog! Dive into coding adventures, tech tips, and personal projects."
+  enableGlobalLanguageMenu = true
+  customCSS = ["/css/style.css"]
+  customJS  = []
+  justifyContent = false
+  [params.author]
+    name = "Lumberj3ck"
+  [params.footer]
+    trademark = 2025
+    copyright = true
+    author = true
+    topText = []
+    bottomText = [
+      "Powered by <a href=\"http://gohugo.io\">Hugo</a>",
+      "Theme used <a href=\"https://github.com/rhazdon/hugo-theme-hello-friend-ng\">Hello Friend</a> "
+    ]
+  [params.favicon.color]
+    mask = "#1b1c1d"
+    msapplication = "#1b1c1d"
+    theme = "#1b1c1d"
+  [params.logo]
+    logoMark     = ">"
+    logoText     = "$ cd /home/lumberj3ck"
+    logoHomeLink = "/"
+
+[[params.social]]
+  name = "email"
+  url  = "mailto:alanuldashev@gmail.com"
+[[params.social]]
+  name = "github"
+  url  = "https://github.com/Lumberj3ck"
+[[params.social]]
+  name = "linkedin"
+  url  = "https://www.linkedin.com/in/lumberj3ck/"
+
+[languages]
+  [languages.en]
+    weight    = 1
+    copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
+  [languages.en.params]
+    subtitle  = "Hello Friend NG Theme"
+  [languages.fr]
+    weight    = 2
+    copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
+  [languages.fr.params]
+    subtitle  = "Hello Friend NG Theme"
+
+[menu]
+  [[menu.main]]
+    identifier = "about"
+    name       = "About"
+    url        = "about/"
+  [[menu.main]]
+    identifier = "posts"
+    name       = "Posts"
+    url        = "posts/"

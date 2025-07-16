@@ -43,7 +43,7 @@ so if we import calculate we can use all names from both files solution_runner.g
 
 If we want to import inside of solution runner something from eiler we need to create for all of this things a go.mod file 
 
-{{< highlight go "linenos=table,hl_lines=,linenostart=1" >}}
+{{< highlight go >}}
 module learning_go/katas
 
 go 1.22.2
@@ -52,7 +52,7 @@ go 1.22.2
 Every path for imports should be relative to this path in go mod 
 
 **File: calculate/solution_runner.go**
-{{< highlight go "linenos=table,hl_lines=,linenostart=1" >}}
+{{< highlight go >}}
 package main
 
 import "fmt"
@@ -69,7 +69,7 @@ Doesn't matter where the main file which imports all those modules is located, m
 if for example we have a package eiler_10 all the files inside of this directory can have shared variables and object names  
 
 **File: eiler/eiler_6/eiler_6.go**
-{{< highlight go "linenos=table,hl_lines=,linenostart=1" >}}
+{{< highlight go >}}
 package eiler_6
 
 import "math"
@@ -88,7 +88,7 @@ func Solution(n Element) int{
 {{< / highlight >}}
 
 **File: eiler/eiler_6/types_eiler_6.go**
-{{< highlight go "linenos=table,hl_lines=,linenostart=1" >}}
+{{< highlight go >}}
 package eiler_6
 
 
@@ -125,7 +125,7 @@ Inside of math_module let's create go mod file, this will mark for go that this 
 
 Inside of go.mod
 
-{{< highlight go "linenos=table,hl_lines=,linenostart=1" >}}
+{{< highlight go >}}
 module mymodule
 
 go 1.22.2
@@ -142,7 +142,7 @@ Lets create package calc where we would declare some functionality.
 
 Inside of math.go
 
-{{< highlight go "linenos=table,hl_lines=,linenostart=1" >}}
+{{< highlight go >}}
 package calc
 
 
@@ -162,7 +162,7 @@ For testing this module, let's create `main` module near `mymodule`
 {{< / highlight >}}
 
 Inside of main.go
-{{< highlight go "linenos=table,hl_lines=,linenostart=1" >}}
+{{< highlight go >}}
 package main
 
 import (
@@ -192,7 +192,7 @@ Try to run and get an error
 
 We need to explicitly say to go compiler where is `mymodule` located. If module is only on our local machine, we need to use `replace` directive. 
 
-{{< highlight go "linenos=table,hl_lines=,linenostart=1" >}}
+{{< highlight go >}}
 module main
 
 go 1.22.2

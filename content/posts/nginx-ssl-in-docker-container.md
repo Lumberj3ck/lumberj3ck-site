@@ -22,14 +22,14 @@ Ensure you have a working **Docker Compose** configuration. Back up your configu
 {{< / highlight >}}
 
 **Nginx Docker file**
-{{< highlight dockerfile "linenos=table,hl_lines=,linenostart=1" >}}
+{{< highlight dockerfile >}}
 FROM nginx
 RUN rm /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/conf.d
 {{< / highlight >}}
 
 **Nginx configuration**
-{{< highlight nginx "linenos=table,hl_lines=,linenostart=1" >}}
+{{< highlight nginx >}}
 # the name for the service which we gave inside of a docker compose
 upstream backend_service{
     server backend_service:8000;
@@ -62,7 +62,7 @@ I posted docker compose and main Docker file inside of this [gist](https://gist.
 Map the necessary ports in docker-compose.yaml:
 80 port for the incomming http traffic and also 443 for the https.
 
-{{< highlight nginx "linenos=table,hl_lines=4-5,linenostart=1" >}}
+{{< highlight nginx >}}
 nginx_service:
   build: ./nginx
   ports:
@@ -78,7 +78,7 @@ nginx_service:
 Add Certbot to your **docker-compose.yaml** to automatically obtain Let's Encrypt certificates:
 Certbot it is an open source software, which automatically provides letsencrypt certificates. Certbot will produce files required for the nginx, thats why we need to have a volumes and inject those volumes to the nginx container.
 
-{{< highlight nginx "linenos=table,hl_lines=1-5,linenostart=1" >}}
+{{< highlight nginx >}}
 certbot:
   image: certbot/certbot:latest
   volumes:
@@ -88,7 +88,7 @@ certbot:
 
 Inject these volumes into the Nginx service:
 
-{{< highlight nginx "linenos=table, hl_lines=9-10,linenostart=1" >}}
+{{< highlight nginx >}}
 nginx_service:
   build: ./nginx
   ports:
@@ -107,7 +107,7 @@ Full docker compose configuration is [here](https://gist.github.com/Lumberj3ck/b
 ### Configuring HTTPS
 Modify your Nginx configuration to transfer all incoming traffic from 80 port (which is default port for the http) to 443 (which is default port for the https). Create a new server block which will listen for the 443 port. Basically we just shifted all the listeners to the new server block.
 
-{{< highlight nginx "linenos=table, hl_lines=,linenostart=1" >}}
+{{< highlight nginx >}}
 upstream backend_service{
     server backend_service:8000;
 }
@@ -140,7 +140,7 @@ server {
 
 Currently configuration is working, but only with the https and to start accepting request from the http we need to add new block.
 
-{{< highlight nginx "linenos=table, hl_lines=11,linenostart=1" >}}
+{{< highlight nginx >}}
 server {
     listen 80;
 

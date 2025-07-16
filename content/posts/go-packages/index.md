@@ -53,7 +53,7 @@ To import names from the eiler package into solution_runner, we need to create a
 
 After running this command inside of folder we can see **go.mod** file
 
-{{< highlight go "linenos=table,hl_lines=,linenostart=1" >}}
+{{< highlight go >}}
 module my-package-name
 
 go 1.22.2
@@ -63,7 +63,7 @@ All import paths should be relative to this path specified in go.mod.
 
 **File: calculate/solution_runner.go**
 
-{{< highlight go "linenos=table,hl_lines=,linenostart=1" >}}
+{{< highlight go >}}
 package main
 
 import "fmt"
@@ -78,7 +78,7 @@ The location of the main file importing these modules doesn't matter; only the p
 
 **File: eiler/eiler_6/eiler_6.go**
 
-{{< highlight go "linenos=table,hl_lines=,linenostart=1" >}}
+{{< highlight go >}}
 package eiler_6
 
 import "math"
@@ -97,7 +97,7 @@ func Solution(n Element) int {
 
 **File: eiler/eiler_6/types_eiler_6.go**
 
-{{< highlight go "linenos=table,hl_lines=,linenostart=1" >}}
+{{< highlight go >}}
 package eiler_6
 
 type Element int
@@ -120,19 +120,19 @@ If we attempt to run only one file from the package, we'll get an error indicati
 Let's create a module:
 
 {{< highlight bash >}}
-  mkdir mymodule
-  cd mymodule
+mkdir mymodule
+cd mymodule
 {{< / highlight >}}
 
 Inside mymodule, let's create a go.mod file to mark this directory as a module for Go.
 
 {{< highlight bash >}}
-  go mod init mymodule
+go mod init mymodule
 {{< / highlight >}}
 
 Within go.mod:
 
-{{< highlight go "linenos=table,hl_lines=,linenostart=1" >}}
+{{< highlight go >}}
 module mymodule
 
 go 1.22.2
@@ -143,14 +143,14 @@ go 1.22.2
 Let's create inside of **mymodule** a package named calc to define some functionality.
 
 {{< highlight bash >}}
-  mkdir calc
-  cd calc
-  touch math.go
+mkdir calc
+cd calc
+touch math.go
 {{< / highlight >}}
 
 Inside math.go:
 
-{{< highlight go "linenos=table,hl_lines=,linenostart=1" >}}
+{{< highlight go >}}
 package calc
 
 func AddInt(a, b int) int {
@@ -161,29 +161,30 @@ func AddInt(a, b int) int {
 To test this module, let's create a main module alongside mymodule.
 
 {{< highlight bash >}}
-  cd ../..
-  mkdir main
-  cd main
-  go mod init main
-  touch main.go
+cd ../..
+mkdir main
+cd main
+go mod init main
+touch main.go
 {{< / highlight >}}
 
 After all we'll have the following folders structure:
 {{< highlight bash >}}
-  ├── main
-  │   ├── go.mod
-  │   ├── main.go
-  │   └── utils.go
-  └── mymodule
-      ├── calc
-      │   └── math.go
-      └── go.mod
+├── main
+│   ├── go.mod
+│   ├── main.go
+│   └── utils.go
+└── mymodule
+    ├── calc
+    │   └── math.go
+    └── go.mod
 {{< / highlight >}}
 
 
 Inside main.go:
 
-{{< highlight go "linenos=table,hl_lines=,linenostart=1" >}}
+
+{{< highlight go >}}
 package main
 
 import (
@@ -199,13 +200,13 @@ func main() {
 
 **Inside of main directory**
 {{< highlight bash >}}
-  go run .
+go run .
 {{< / highlight >}}
 
 If we try to run this, we'll get an error:
 
 {{< highlight bash >}}
-  package mymodule/calc is not in GOROOT (/usr/local/go/src/mymodule/calc)
+package mymodule/calc is not in GOROOT (/usr/local/go/src/mymodule/calc)
 {{< / highlight >}}
 
 {{< blockquote >}}
@@ -214,7 +215,7 @@ This error occurs because we haven't specified where Go should find the mymodule
 
 We need to explicitly tell the Go compiler where mymodule is located. If the module is only on our local machine, we use the replace directive.
 
-{{< highlight go "linenos=table,hl_lines=,linenostart=1" >}}
+{{< highlight go >}}
 module main
 
 go 1.22.2
@@ -228,28 +229,28 @@ Let's test again:
 Inside the main directory
 
 {{< highlight bash >}}
-  go run  .
+go run  .
 {{< / highlight >}}
 
 
 We'll get almost equivalent error, but now we just need to get the module:
 
 {{< highlight bash >}}
-  package mymodule/calc is not in GOROOT (/usr/local/go/src/mymodule/cal)
-  module mymodule provides package mymodule/calc and is replaced but not required; to add it:
-  go get mymodule
+package mymodule/calc is not in GOROOT (/usr/local/go/src/mymodule/cal)
+module mymodule provides package mymodule/calc and is replaced but not required; to add it:
+go get mymodule
 {{< / highlight >}}
 
 Let's run the suggested command:
 
 {{< highlight bash >}}
-  go get mymodule
+go get mymodule
 {{< / highlight >}}
 
 Inside main/go.mod, we now have a new line:
 
 {{< highlight bash >}}
-  require mymodule v0.0.0-00010101000000-000000000000 // indirect
+require mymodule v0.0.0-00010101000000-000000000000 // indirect
 {{< / highlight >}}
 
 This indicates the specific version of the mymodule module that the Go compiler will use for building.

@@ -34,14 +34,14 @@ Multiply each digit by its weight:
 
 ## Binary operators
 **Shifting:** 
-{{< highlight python "linenos=table,hl_lines=,linenostart=1" >}}
+{{< highlight python >}}
 n = 45
 n = n << 1 # n is 90
 {{< / highlight >}}
 
 so we basically shift all numbers by 1 so it basically like multipliying by 2
 
-{{< highlight python "linenos=table,hl_lines=,linenostart=1" >}}
+{{< highlight python >}}
 pow = 1
 pow = pow << 2 
 {{< / highlight >}}

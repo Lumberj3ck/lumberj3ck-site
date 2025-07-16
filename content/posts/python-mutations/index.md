@@ -8,7 +8,7 @@ summary = " Understand mutability in Python. Learn how variables can impact each
 
 Have you ever encountered unexpected results in your Python code when variables seemed to change in tandem? This article delves into the concepts of mutability and how changes in one variable can sometimes propagate to others. We'll explain why this behavior occurs and how to manage it effectively.
 Let's explore this with a simple example:
-{{< highlight python "linenos=table,hl_lines=,linenostart=1" >}}
+{{< highlight python >}}
 numbers = [2, 1, 3, 4, 7]
 # points to the same object
 numbers2 = numbers 
@@ -18,7 +18,7 @@ numbers2 = numbers
  {{< emphasize >}} numbers2 {{< / emphasize >}} is not a distinct object; it's a link to  {{< emphasize >}} numbers {{< / emphasize >}}. Any changes to `numbers` will reflect in `numbers2`.
 
 Let's change {{< emphasize >}} numbers {{< / emphasize >}} list:
-{{< highlight python "linenos=table,hl_lines=,linenostart=1" >}}
+{{< highlight python >}}
 numbers.pop()
 # Output: 7
 {{< / highlight  >}}
@@ -26,7 +26,7 @@ numbers.pop()
 
 Now, check both lists:
 
-{{< highlight python "linenos=table,hl_lines=,linenostart=1" >}}
+{{< highlight python >}}
 print(numbers)   # Output: [2, 1, 3, 4] 
 print(numbers2)  # Output: [2, 1, 3, 4]
 {{< / highlight  >}}
@@ -40,7 +40,7 @@ Here, changes in {{< emphasize >}} numbers {{< / emphasize >}} impact {{< emphas
 {{< / blockquote >}}
 
 However this works differently with immutable data types:
-{{< highlight python "linenos=tables, linostart=1" >}}
+{{< highlight python >}}
 name = "Walt"
 
 # second_name points to the same location as the name
@@ -72,7 +72,7 @@ For example:  **dir(list)**  (append method);  **dir(set)**    (pop method).
 
 ### Example 1 - Mutation in Lists:
 
-{{< highlight python "linenos=table,hl_lines=,linenostart=1" >}}
+{{< highlight python >}}
 # Mutable data type: List
 numbers = [1, 2, 3, 4]
 
@@ -86,7 +86,7 @@ print(numbers)
 
 ### Example 2 - Mutation in Dictionaries:
 
-{{< highlight python "linenos=table,hl_lines=,linenostart=1" >}}
+{{< highlight python >}}
 # Mutable data type: Dictionary
 person = {'name': 'Alice', 'age': 25}
 
@@ -103,7 +103,7 @@ print(person)
 Change of possession involves linking to a completely different object. This is more common with immutable data types.
 
 ### Example 1 - Change of Possession with Strings:
-{{< highlight python "linenos=table,hl_lines=,linenostart=1" >}}
+{{< highlight python >}}
 # Immutable data type: String
 greeting = "Hello"
 
@@ -116,7 +116,7 @@ print(greeting)
 
 
 ### Example 2 - Change of Possession with Tuples:
-{{< highlight python "linenos=table,hl_lines=,linenostart=1" >}}
+{{< highlight python >}}
 # Immutable data type: Tuple
 coordinates = (3, 4)
 
@@ -134,7 +134,7 @@ print(coordinates)
 **is**: Checks if two variables point to the same memory location.  
 **==**: Checks if two variables store the same data.
 
-{{< highlight python "linenos=table,hl_lines=,linenostart=1" >}}
+{{< highlight python >}}
 import copy
 
 numbers = [1, 2, 3]

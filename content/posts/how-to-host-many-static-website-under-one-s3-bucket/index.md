@@ -103,7 +103,7 @@ By default aws lambda must have a permissions for logging to the **CloudWatch**,
 
 Here’s the JavaScript code for the Lambda@Edge function:
 
-{{< highlight js "linenos=table,hl_lines=,linenostart=1" >}}
+{{< highlight js >}}
 export const handler = async (event) => {
     // here our handler accepts parameter --> event
     const request = event.Records[0].cf.request;
