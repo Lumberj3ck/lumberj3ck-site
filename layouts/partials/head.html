@@ -24,7 +24,7 @@
 <!-- CSS -->
 {{ $opts := dict "transpiler" "libsass" "targetPath" "main.css" "outputStyle" "compressed" "enableSourceMap" true }}
 {{ with resources.Get "scss/main.scss" | toCSS $opts | minify | fingerprint }}
-  <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ .Permalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
 {{ end }}
 
 
