@@ -4,7 +4,26 @@
 <meta name="robots" content="noindex" />
 {{ end }}
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="author" content="{{ if .Params.author }}{{ .Params.author }}{{ else }}{{ range .Site.Author }}{{ . }} {{ end }}{{ end }}">
+{{- /*
+  Prefer page-level author, otherwise site params author.
+  Hugo's `.Site.Author` isn't present by default, so avoid referencing it.
+*/ -}}
+{{- $author := "" -}}
+{{- with .Params.author -}}
+  {{- $author = . -}}
+{{- end -}}
+{{- if not $author -}}
+  {{- with .Site.Params.author -}}
+    {{- /* Common theme convention: params.author.name */ -}}
+    {{- with .name -}}
+      {{- $author = . -}}
+    {{- else -}}
+      {{- /* If someone configures params.author as a plain string. */ -}}
+      {{- $author = . -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+<meta name="author" content="{{ $author }}">
 <meta name="description" content="{{ if .IsHome }}{{ .Site.Params.homeSubtitle }}{{ else }}{{ if .Params.Description }}{{ .Params.Description }}{{ else }}{{ .Summary | plainify }}{{ end }}{{ end }}" />
 <meta name="keywords" content="{{ .Site.Params.keywords }}{{ if .Params.tags }}{{ range .Params.tags }}, {{ . }}{{ end }}{{ end }}" />
 <meta name="robots" content="noodp" />

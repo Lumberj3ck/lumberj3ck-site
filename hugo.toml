@@ -60,6 +60,7 @@ disableHugoGeneratorInject = false
   justifyContent = false
   [params.author]
     name = "Lumberj3ck"
+    email = "alanuldashev@gmail.com"
   [params.footer]
     trademark = 2025
     copyright = true
@@ -105,6 +106,10 @@ disableHugoGeneratorInject = false
     identifier = "about"
     name       = "About"
     url        = "about/"
+  [[menu.main]]
+    identifier = "notes"
+    name       = "Notes"
+    url        = "notes/"
   [[menu.main]]
     identifier = "posts"
     name       = "Posts"
