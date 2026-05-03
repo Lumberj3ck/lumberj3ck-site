@@ -36,7 +36,7 @@ disableHugoGeneratorInject = false
       limit = 42
 
 [permalinks]
-  posts = "/posts/:year/:month/:title/"
+  blogs = "/blogs/:year/:month/:title/"
 
 [blackfriday]
   hrefTargetBlank = true
@@ -107,10 +107,6 @@ disableHugoGeneratorInject = false
     name       = "About"
     url        = "about/"
   [[menu.main]]
-    identifier = "notes"
-    name       = "Notes"
-    url        = "notes/"
-  [[menu.main]]
-    identifier = "posts"
-    name       = "Posts"
-    url        = "posts/"
+    identifier = "blogs"
+    name       = "Blogs"
+    url        = "blogs/"

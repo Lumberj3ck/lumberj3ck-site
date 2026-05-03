@@ -9,7 +9,7 @@ summary = "Discover how Go uses 'int' and 'uint' to represent numbers. Explore h
 In **Go** there a two types representing numbers (excluding floating point nubmers): uint and int. The maximum digital value you can store in **int** is 127.  In **uint**  is a 255.  Here is why ⬇️
 {{< / blockquote >}}
 
-Every programming language saves numbers in [Binary numbers](/posts/binary-numbers)
+Every programming language saves numbers in [Binary numbers](/blogs/binary-numbers)
 
 **Int** stands for all numbers positive and negative, when the **uint** in the opposite only for positive values from 0 to **max_value**.
 

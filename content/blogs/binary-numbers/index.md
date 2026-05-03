@@ -60,5 +60,4 @@ We can use binary operators for flags. For example, if in our application we wil
 
 We can say that permission to write would be first digit from the right, permission for read would be second digit from the right. If user would have this permission then we set 1, if not 0. This user would have all permissions {{< emphasize >}}'00001111' {{< / emphasize >}}. This user will have everything but execute, {{< emphasize >}}'00001101'{{< / emphasize >}}. 
 
-Based on this Go has [Uint and Int](/posts/uint-and-int) types
-
+Based on this Go has [Uint and Int](/blogs/uint-and-int) types
