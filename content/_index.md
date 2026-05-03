@@ -9,4 +9,4 @@ I mainly work with Go and Python, and I also use JavaScript/TypeScript when I ne
 
 My interests include backend engineering, systems programming, DevOps, and building simple tooling. I like minimalism and open source.
 
-[resume _↗](/resume.pdf)
+[resume _↗](resume.pdf)
