@@ -113,3 +113,8 @@ disableHugoGeneratorInject = false
     identifier = "work"
     name       = "Work"
     url        = "work/"
+
+  [[menu.main]]
+    identifier = "projects"
+    name       = "Projects"
+    url        = "projects/"
