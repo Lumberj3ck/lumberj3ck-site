@@ -1,4 +1,4 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://lumberj3ck.site/'
 title = 'Alan Yuldashev'
 languageCode = 'en-us'
 PygmentsCodeFences = true
@@ -15,7 +15,8 @@ publishDir   = "public"
 buildDrafts  = false
 buildFuture  = false
 buildExpired = false
-canonifyURLs = true
+canonifyURLs = false
+relativeURLs = true
 
 enableRobotsTXT = true
 enableGitInfo   = false
@@ -41,6 +42,7 @@ disableHugoGeneratorInject = false
 [blackfriday]
   hrefTargetBlank = true
 
+
 [taxonomies]
   tag      = "tags"
   category = "categories"
@@ -52,7 +54,7 @@ disableHugoGeneratorInject = false
   dateformNum     = "2006-01-02"
   dateformNumTime = "2006-01-02 15:04"
   description = "Explore my insightful blog. Discover the latest articles, tips, and tutorials to help you achieve your goals."
-  homeSubtitle = "Welcome to my blog! Dive into coding adventures, tech tips, and personal projects."
+  homeSubtitle = ""
   enableGlobalLanguageMenu = false
   enableThemeToggle = true
   customCSS = ["/css/style.css"]

@@ -6,15 +6,4 @@ pre[class*="language-"] {
 }
 
 /* Homepage "about" content: keep readable line length. */
-.home-content {
-  width: 100%;
-  max-width: 800px;
-  text-align: left;
-  margin: 30px auto 0;
-  padding: 0 20px;
-  line-height: 1.65;
-}
-
-.home-content p {
-  margin: 0 0 1rem;
-}
+/* (moved to assets/scss/_main.scss) */

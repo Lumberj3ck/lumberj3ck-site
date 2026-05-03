@@ -347,6 +347,24 @@ ol ol {
   }
 }
 
+// Homepage content: keep readable line length and left alignment.
+// Put this into the main SCSS bundle so it doesn't depend on customCSS.
+.content.home-content {
+  width: 100%;
+  max-width: 800px;
+  text-align: left;
+  justify-content: flex-start;
+  align-items: stretch;
+  margin: 30px auto 0;
+  padding: 0 20px;
+  line-height: 1.65;
+}
+
+.content.home-content p {
+  margin: 0 0 1rem;
+}
+
+
 hr {
   width: 100%;
   border: none;
