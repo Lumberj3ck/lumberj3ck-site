@@ -49,7 +49,7 @@
 
 {{ range $val := $.Site.Params.customCSS }}
     {{ if gt (len $val) 0 }}
-        <link rel="stylesheet" type="text/css" href="{{ $val }}">
+        <link rel="stylesheet" type="text/css" href="{{ $val | relURL }}">
     {{ end }}
 {{ end }}
 

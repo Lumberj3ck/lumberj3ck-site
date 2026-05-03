@@ -1,4 +1,14 @@
-<a href="{{ if .Site.Params.Logo.LogoHomeLink }}{{ .Site.Params.Logo.LogoHomeLink }}{{ else }}{{ .Site.BaseURL | relLangURL }}{{ end }}" style="text-decoration: none;">
+{{- /*
+  Use the site root relative permalink so project sites
+  like GitHub Pages (/REPO/) work correctly.
+*/ -}}
+{{- $href := .Site.Home.RelPermalink -}}
+{{- with .Site.Params.Logo.LogoHomeLink -}}
+  {{- if and (ne . "") (ne . "/") -}}
+    {{- $href = . | relURL -}}
+  {{- end -}}
+{{- end -}}
+<a href="{{ $href }}" style="text-decoration: none;">
     <div class="logo">
         {{ if .Site.Params.Logo.path }}
             <img src="{{ .Site.Params.Logo.path }}" alt="{{ .Site.Params.Logo.alt }}" />

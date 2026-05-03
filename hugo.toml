@@ -16,7 +16,7 @@ buildDrafts  = false
 buildFuture  = false
 buildExpired = false
 canonifyURLs = false
-relativeURLs = true
+relativeURLs = false
 
 enableRobotsTXT = true
 enableGitInfo   = false
@@ -57,7 +57,7 @@ disableHugoGeneratorInject = false
   homeSubtitle = ""
   enableGlobalLanguageMenu = false
   enableThemeToggle = true
-  customCSS = ["/css/style.css"]
+  customCSS = ["css/style.css"]
   customJS  = []
   justifyContent = false
   [params.author]
@@ -107,4 +107,4 @@ disableHugoGeneratorInject = false
   [[menu.main]]
     identifier = "blogs"
     name       = "Blogs"
-    url        = "blogs/"
+    url        = "/blogs/"
