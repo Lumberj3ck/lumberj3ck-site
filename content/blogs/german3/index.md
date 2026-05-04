@@ -4,6 +4,8 @@ date: 2026-05-01T12:49:36+02:00
 draft: false
 comments: false
 images:
+tags:
+  - german
 ---
 
 Yesterday, I practiced a little bit of german, when was buying judo gi in the shop, I felt myself pretty comfortable with the conversation probably because it was easy. The owner was really nice, plus I found insanely good judo gi, it is blue and looks best on me, plus the quality is great. I was expecting to pay at least 100 eur but got it for 65.   

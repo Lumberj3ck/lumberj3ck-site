@@ -3,6 +3,8 @@ title: "Learning german in public day 1"
 date: 2026-04-29T11:24:08+02:00
 draft: false
 comments: false
+tags:
+  - german
 ---
 
 
