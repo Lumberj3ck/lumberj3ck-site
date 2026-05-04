@@ -1,8 +1,8 @@
 +++
-title = 'Nginx Ssl in Docker Container'
+title = 'Nginx SSL in Docker Container'
 date = 2024-06-04T07:21:28+02:00
 draft = false
-summary = 'This guide covers setting up Nginx with HTTPS in a Docker environment, using Certbot to obtain and renew Lets Encrypt certificates. It provides a detailed configuration for Docker Compose, Nginx, and Certbot, ensuring secure handling of web traffic. Finally, it includes steps to configure Django settings for HTTPS compatibility.'
+summary = "This guide covers setting up Nginx with HTTPS in a Docker environment, using Certbot to obtain and renew Let's Encrypt certificates. It provides a detailed configuration for Docker Compose, Nginx, and Certbot, ensuring secure handling of web traffic. Finally, it includes steps to configure Django settings for HTTPS compatibility."
 +++
 
 Using Nginx inside a Docker container is a common approach for web applications, especially when paired with the Django framework and Gunicorn. Typically, you have one Docker container for **Django** and **Gunicorn**, another for the database, and a final one for Nginx. Nginx acts as a reverse proxy, forwarding requests from the server to Gunicorn. For this setup, Nginx listens for requests by binding the server's public port to the Nginx container's port (e.g., {{< emphasize >}}80{{< / emphasize >}} for HTTP or {{< emphasize >}}443{{< / emphasize >}} for HTTPS).
@@ -11,7 +11,7 @@ In this guide, we’ll set up Nginx with HTTPS in a Docker environment.
 ### Prerequisites
 Ensure you have a working **Docker Compose** configuration. Back up your configuration files and commit any changes to Git for easy rollback if needed. Assume the following file structure:
 
-**Posible file tree**
+**Possible file tree**
 {{< highlight bash >}}
   ├── Dockerfile
   ├── docker-compose.yaml
@@ -60,7 +60,7 @@ I posted docker compose and main Docker file inside of this [gist](https://gist.
 
 ### Docker Compose Configuration  
 Map the necessary ports in docker-compose.yaml:
-80 port for the incomming http traffic and also 443 for the https.
+80 port for the incoming http traffic and also 443 for the https.
 
 {{< highlight nginx >}}
 nginx_service:
@@ -76,7 +76,7 @@ nginx_service:
 
 ### Adding Certbot
 Add Certbot to your **docker-compose.yaml** to automatically obtain Let's Encrypt certificates:
-Certbot it is an open source software, which automatically provides letsencrypt certificates. Certbot will produce files required for the nginx, thats why we need to have a volumes and inject those volumes to the nginx container.
+Certbot is an open source software, which automatically provides letsencrypt certificates. Certbot will produce files required for the nginx, that's why we need to have volumes and inject those volumes to the nginx container.
 
 {{< highlight nginx >}}
 certbot:
@@ -162,7 +162,7 @@ Full nginx configuration is [here](https://gist.github.com/Lumberj3ck/b9b7678b0d
 Run Certbot to obtain the certificates
 
 {{< blockquote >}}
-Don't forget to **build the docker images** and make sure that **nginx container is up**, and you specified right domain name inside of the command bellow.
+Don't forget to **build the docker images** and make sure that **nginx container is up**, and you specified right domain name inside of the command below.
 {{< / blockquote >}}
 
 {{< highlight bash >}}
@@ -185,7 +185,7 @@ Remember to renew your certificates every three months:
 
 
 {{< blockquote >}}
-Also if you're using Django don't forget to add follwing options in your settings.py  
+Also if you're using Django don't forget to add following options in your settings.py  
 {{< / blockquote >}}
 
 {{< highlight python >}}
@@ -193,4 +193,4 @@ Also if you're using Django don't forget to add follwing options in your setting
   CSRF_COOKIE_HTTPONLY = False
 {{< / highlight >}}
 
-**It's done! Your server is oficially working with the https traffic!**
+**It's done! Your server is officially working with the https traffic!**

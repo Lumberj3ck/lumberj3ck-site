@@ -2,7 +2,7 @@
 title = 'Python Mutations'
 date = 2024-04-05T11:36:52+02:00
 draft = false
-summary = " Understand mutability in Python. Learn how variables can impact each other and how to manage these changes for predictable code. Covers lists, dictionaries, strings, and more."
+summary = "Understand mutability in Python. Learn how variables can impact each other and how to manage these changes for predictable code. Covers lists, dictionaries, strings, and more."
 +++
 
 
@@ -39,7 +39,7 @@ Here, changes in {{< emphasize >}} numbers {{< / emphasize >}} impact {{< emphas
 **Note**: If you need to create a distinct object you need to use python **copy** module
 {{< / blockquote >}}
 
-However this works differently with immutable data types:
+However, this works differently with immutable data types:
 {{< highlight python >}}
 name = "Walt"
 
@@ -52,7 +52,7 @@ print(name) # Walt
 print(second_name)  # Jesse
 {{< / highlight >}}
 
-This behaviour may cause unpredictable erorrs if you don't know about it.
+This behaviour may cause unpredictable errors if you don't know about it.
 
 
 💡 **Two Types of Changes in Python:**

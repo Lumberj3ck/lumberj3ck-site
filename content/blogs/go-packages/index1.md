@@ -8,12 +8,12 @@ summary = "Discover how Go's package system elegantly simplifies your code struc
 In Go, packages provide a powerful way to organize and structure your code. One key feature is that files within the same package can directly access each other's variables, functions, and types. This promotes seamless collaboration between different parts of your codebase. Let's see how this works in practice.  
 
 If two files have same **package name** and they are in same directory they can access variables and names from each other names, e.g share names
-We can run this thing like so
+We can run this thing like so.
 {{< highlight bash  >}}
   go run *.go 
 {{< / highlight  >}}
 
-All the package name under the directory name is sharing all the name in all those files. 
+All the package name under the directory name is sharing all the name in all those files.
 
 {{< highlight bash  >}}
   ├── calculate
@@ -132,7 +132,7 @@ go 1.22.2
 {{< / highlight >}}
 
 mymodule inside of "module mymodule" is alias which we can use when import this module. 
-Lets create package calc where we would declare some functionality. 
+Let's create package calc where we would declare some functionality. 
 
 {{< highlight bash >}}
   mkdir calc
@@ -151,7 +151,7 @@ func AddInt(a, b int) int{
 }
 {{< / highlight >}}
 
-For testing this module, let's create `main` module near `mymodule` 
+For testing this module, let's create `main` module near `mymodule`.
 
 {{< highlight bash >}}
   cd ../..
@@ -176,7 +176,7 @@ func main(){
 }
 {{< / highlight >}}
 
-Try to run and get an error 
+Try to run and get an error.
 {{< highlight bash >}}
   # Inside of main directory
   go run .
@@ -187,7 +187,7 @@ Try to run and get an error
 {{< / highlight >}}
 
 {{< blockquote >}}
- The problem here, that we didn't declare anything inside of `main/go.mod` about where go should search for this module `mymodule`.  Go tried to search inside of GOROOT, when didn't found saw that name of our module doesn't look like url and emited following error. 
+ The problem here, that we didn't declare anything inside of `main/go.mod` about where go should search for this module `mymodule`. Go tried to search inside of GOROOT, when didn't found saw that name of our module doesn't look like URL and emitted following error. 
 {{< / blockquote >}}
 
 We need to explicitly say to go compiler where is `mymodule` located. If module is only on our local machine, we need to use `replace` directive. 
@@ -197,7 +197,7 @@ module main
 
 go 1.22.2
 
-// location of mymodule relatively to main module
+// location of mymodule relative to main module
 replace mymodule => ../mymodule
 {{<  / highlight >}}
 
@@ -229,4 +229,3 @@ Inside of main/go.mod we got new string:
 It points to which exactly version of this module go compiler will use for build.
 
 Run the main.go one more time. Hooray, now it's working!
-

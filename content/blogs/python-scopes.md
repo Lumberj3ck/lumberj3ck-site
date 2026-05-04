@@ -4,12 +4,12 @@ date = 2024-03-03T11:36:52+02:00
 draft = false
 summary = "Learn how Python handles variables in different scopes. Avoid errors and write predictable code by understanding how functions access and modify variables."
 +++
-This is a note about python Scopes.
+This is a note about Python scopes.
 
-So there is a global scope everything which is outside of a function and there also local scope which is inside of a function. 
+So there is a global scope, everything which is outside of a function, and there is also a local scope which is inside of a function.
 
 {{< highlight python >}}
-# they are threating each other as the different namespaces
+# they are treating each other as different namespaces
 temp = 'global'
 def change():
     temp = 'local'
@@ -22,9 +22,9 @@ def change():
 print(temp) # local
 {{< / highlight >}}
 
-If we want to overwrite this behaviour we should use **global** operator
+If we want to overwrite this behaviour we should use the **global** operator.
 
-The same behaviour we would see if we try to change a variable which is defined inside of a function. 
+The same behaviour we would see if we try to change a variable which is defined inside of a function.
 
 {{< highlight python >}}
 def main():
@@ -36,7 +36,7 @@ def main():
     print("Inside of main", temp) # Inside of main value
 {{< / highlight >}}
 
-But if we want to access a variable, which is instantiated inside of a local scope (inside of a function) we need to use a **local** operator
+But if we want to access a variable, which is instantiated inside of a local scope (inside of a function) we need to use a **local** operator.
 
 {{< highlight python >}}
 def main():

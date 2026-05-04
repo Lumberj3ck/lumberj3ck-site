@@ -8,7 +8,7 @@ tags:
   - german
 ---
 
-Yesterday, I practiced a little bit of german, when was buying judo gi in the shop, I felt myself pretty comfortable with the conversation probably because it was easy. The owner was really nice, plus I found insanely good judo gi, it is blue and looks best on me, plus the quality is great. I was expecting to pay at least 100 eur but got it for 65.   
+Yesterday, I practiced a little bit of german when I was buying a judo gi in the shop, I felt pretty comfortable with the conversation probably because it was easy. The owner was really nice, plus I found an insanely good judo gi, it is blue and looks best on me, plus the quality is great. I was expecting to pay at least 100 eur but got it for 65.   
 Damn I just figured I want to write this in german.
 
 Lets try first version:  
@@ -18,7 +18,7 @@ It was really nice try I found a couple of new words I didn't know or I couldn't
 `der Besitzer -- owner`  
 `ausgeben -- spend`  
 `erwarten -- expect`  
-I will spend 5 minutes learning my anki deck. In the end I end up studying for more then 10 minutes. 
+I will spend 5 minutes learning my anki deck. In the end I end up studying for more than 10 minutes. 
 And for today session I want to continue with the video which I was listening to yesterday.  
 `anstrengend -- tiring`  
 `schlimmste-- worst  (Das allerschlimmste aber)`  

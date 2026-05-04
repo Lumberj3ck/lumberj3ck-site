@@ -64,7 +64,7 @@ Next, create an SSL certificate in AWS Certificate Manager for your domain. This
 
 Add the generated CNAME records to your DNS provider to validate domain ownership. If your DNS provider doesn’t support this, you can use Cloudflare, as I did.
 {{< blockquote >}}
-**Note**: I had an isssue with **NameCheap** they didn't allow me to insert CNAME value from **AWS Certificate manager**, that's why I used **cloudflare** instead. The process of moving to manage your domain name in cloudflare is pretty straighforward.
+**Note**: I had an issue with **NameCheap** they didn't allow me to insert CNAME value from **AWS Certificate manager**, that's why I used **cloudflare** instead. The process of moving to manage your domain name in cloudflare is pretty straightforward.
 {{< / blockquote >}}
 
 {{< figure src="cloudflare-dns-settings.png" style="min-width: 250px; max-width:800px; margin:0;" width="100%" alt="Cloudflare DNS settings">}}
@@ -107,7 +107,7 @@ Here’s the JavaScript code for the Lambda@Edge function:
 export const handler = async (event) => {
     // here our handler accepts parameter --> event
     const request = event.Records[0].cf.request;
-    // logs are accesible in AWS CloudWatch
+    // logs are accessible in AWS CloudWatch
     console.log('Original request:', JSON.stringify(request, null, 2));
     const headers = request.headers;
     // Access the domain to which request has been made
