@@ -23,8 +23,25 @@ Line 6, "Hopped, it remained".
 Line 7, "Almost lost your thoughts".  
 Line 8, "Didn't move yourself from somewhere", don't know what "Fleck" means.  
 So far I think we kind of see the character as someone who postpones life and forgets his dreams. Lets see what we will get with the translation of words I don't know.  
-Seems, that `Vorübergehen -- pass by`, this means "Dreams fade away"
+Seems, that `Vorübergehen -- pass by`, this means "Dreams fade away".   
+`Verstaubt -- dusty` I almost got this one, it was "Your board is dusty".  
+`Überschäumen -- to foam over` so "Your doubts overflow"  
+Line 6 is kind of what I translated.   
+Line 7 I was wrong about "Glauben" it is here means "faith".  
+Line 8, `Fleck -- spot`, "You didn't move from the spot".  
 
+The pre chorus  
+I had to check `zukommen -- come towards`, "Now it comes slowly towards you".  
+`schlägt -- strike` I actually didn't indetify this word, even though I knew it. `Gesicht -- face` I didn't know. "Water strikes you in the face"  
+Third line is easy, "You see your life as a film"  
+Fourth line, "You can't believe it breaks", here I think it is about life.  
+
+The chorus
+First two lines are really understandable, "It is perfect Wave, It is perfect day".  
+Third line "Allow it to carry you", `tragen -- to cary, to take`  
+Fourth line, "Don't think about anything"
+Next sentences pretty easy and repeting in chorus.  
+So connecting board is dusty, with the waves and water hitting, the character of the song surfer, who was afraid and had doubts, so were postponning the thing actually liked to do. And as we will actually find out in the further, he will be feelling free and actually living a life. "Du stellst dich in den Sturm und schreist" -- `schreien -- to scream`
 
 
 
