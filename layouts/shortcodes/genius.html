@@ -1,0 +1,29 @@
+{{/*
+Shortcode: genius
+
+Usage (named params):
+  {{< genius song_id="649357" url="https://genius.com/Juli-deu-perfekte-welle-lyrics" text="Perfekte Welle" >}}
+
+Usage (positional params):
+  {{< genius 649357 "https://genius.com/Juli-deu-perfekte-welle-lyrics" "Perfekte Welle" >}}
+
+Params:
+  - song_id (required): Genius song id
+  - url (optional): link used in the embed text (defaults to https://genius.com/songs/<song_id>)
+  - text (optional): anchor text (defaults to "this song")
+*/}}
+
+{{- $songID := (or (.Get "song_id") (.Get 0)) -}}
+{{- if not $songID -}}
+  {{- errorf "genius shortcode: missing required param 'song_id' (or positional 0)" -}}
+{{- end -}}
+
+{{- $url := (or (.Get "url") (.Get 1) (printf "https://genius.com/songs/%v" $songID)) -}}
+{{- $text := (or (.Get "text") (.Get 2) "this song") -}}
+
+<div style="text-align: center">
+    <div id="rg_embed_link_{{ $songID }}" class="rg_embed_link" data-song-id="{{ $songID }}">
+      Read <a href="{{ $url | safeURL }}">{{ $text | htmlEscape }}</a> on Genius
+    </div>
+    <script crossorigin src="{{ (printf "//genius.com/songs/%v/embed.js?dark=1" $songID) | safeURL }}"></script>
+</div>
