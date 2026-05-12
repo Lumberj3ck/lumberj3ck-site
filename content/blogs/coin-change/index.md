@@ -8,77 +8,80 @@ tags:
   - algos
 ---
 
-We are given array of numbers using this numbers we have to valid split the **amount** and return the minimum amount of numbers is required for split. Example:
+We are given an array of coin denominations. Using these coins, we need to make up the target **amount** and return the minimum number of coins required. Examples:
 
-```bash
-coins = [1,2,5]
+```python
+coins = [1, 2, 5]
 amount = 11
-# Output 3  with 5, 5, 1 
+# Output: 3 (5 + 5 + 1)
 ```
 
-```bash
-coins = [2,6]
+```python
+coins = [2, 6]
 amount = 16
-# Output 4  with 6, 6, 2, 2
+# Output: 4 (6 + 6 + 2 + 2)
 ```
 
-First thing comes to mind in here is being greedy and taking the biggest value coin, but it will fail there is no posibility to have this work. The only posible thing is to go through all posible branches and aggregate on the results. It is dfs, plus we will have to have memoization, because there will be cases where branching is too deep. 
-This is the default dfs question, however because of the memoization we have to return values to the previous calls for agggregation, this is where it might get tricky a bit. We have to decide from that we are going to return the minimum amount of coins needed to reach 0 (or the whole number, if you go otherwise), my initial approach returned total amount of coins in the path and because of that it didn't work with the memo.
+The first thing that comes to mind is a greedy approach: always take the largest coin. This can fail though, so there is no guarantee it will work.
+
+A reliable approach is to explore all possible branches and take the best result. This is DFS plus memoization, because otherwise the recursion will revisit the same subproblems over and over.
+
+This is a classic DFS question. The slightly tricky part is deciding what value the DFS should return so that memoization works. We want `dfs(rest)` to return the minimum number of coins needed to reach `0` from `rest`. My initial attempt returned the total coins along the current path, which doesn't memoize cleanly.
 ```python
 def coin_change(coins: list[int], amount: int) -> float:
-    def dfs(rest, c)->float:
+    def dfs(rest) -> float:
         if rest == 0:
             return 0
-        elif rest <=0:
+        elif rest <= 0:
             return math.inf
-
-        if memo[rest] != -1:
-            return memo[rest]
 
         mc = math.inf
 
         for child in coins:
-            count = dfs(rest-child, c+1)
+            count = dfs(rest - child)
             if count == math.inf:
                 continue
-            mc = min(mc, count+1)
+            mc = min(mc, count + 1)
         return mc
-    r = dfs(amount, 0)
+    r = dfs(amount)
     return -1 if r == math.inf else r
 ```
-The other helpfull thing is to pick `math.inf` as default value, because we always simply check if what returned is `inf`, otherwise always min. I did it otherwise on my first try and tried with default value `-1`, but this quickly gets into mess, when you have to check if `mc != -1` and only then check min. 
-After that adding memo is trivial:
+Another helpful trick is to use `math.inf` as the default value, because you can always take `min(...)`. I first tried using `-1`, but it quickly gets messy because you need extra checks like `mc != -1` before taking the minimum.
+
+After that, adding memoization is straightforward:
 
 ```python
 def coin_change(coins: list[int], amount: int) -> float:
-    memo:list[float] = [-1]*(amount+1)
+    memo: list[float] = [-1] * (amount + 1)
 
-    def dfs(rest, c)->float:
+    def dfs(rest) -> float:
         if rest == 0:
             return 0
-        elif rest <=0:
+        elif rest <= 0:
             return math.inf
 
         if memo[rest] != -1:
             return memo[rest]
 
-        # better to go with the inf then we always need to check for min
-        # with -1 we have to first check if -1 and then min 
+        # Using `inf` means we can always take `min(...)`.
+        # With `-1`, we'd need extra checks before taking the minimum.
         mc = math.inf
 
         for child in coins:
-            count = dfs(rest-child, c+1)
+            count = dfs(rest - child)
             if count == math.inf:
                 continue
-            mc = min(mc, count+1)
+            mc = min(mc, count + 1)
 
         memo[rest] = mc
         return mc
-    r = dfs(amount, 0)
+    r = dfs(amount)
     return -1 if r == math.inf else r
 ```
 
-What we get is essentially Top to bottom DP, the only disadvantage of this approach in from of bottom up DP is that this solution makes a lot of calls, where as bottom up approach only utilises for loops. If you take a look into the memo we got it will be almost the same as we would get out of bottom up DP. Here I clearly understood this differntiation of this two approaches. Bottom Up does mostly the same thing as Top Bottom, it just checks "can we from current amount get to 0?", if yes, we will fill current amount in the table and place the value `dp[0] + 1`, with this `+1` we will account for our current coin we substracted.
+What we get is essentially top-down DP. The main disadvantage compared to bottom-up DP is that this solution makes a lot of function calls, whereas a bottom-up approach only uses loops.
+
+If you look at the `memo` table, it ends up looking very similar to what you'd build with bottom-up DP. This helped me understand the difference between the two approaches. Bottom-up does mostly the same thing as top-down; it just iterates amounts and asks: "can we reach this amount from a smaller one?" If yes, we fill the table with `dp[a - coin] + 1` (the `+1` accounts for the coin we just used).
 
 
 ```python
@@ -96,7 +99,6 @@ def coin_change(coins, amount):
     return dp[amount] if dp[amount] != INF else -1
 ```
 
-Here the most interesting thing is this `dp[a] = min(dp[a], dp[a - coin] + 1)`, we update current amount only if we find jump from current amount to the other, for example `dp[amount - coin] != INF` if this condition holds we can be sure that from here we can use this coin and next path has been already calculated.  
-PS I didn't wrote bottom up approach myself, I was mostly curious to know how it works.
+The most interesting line here is `dp[a] = min(dp[a], dp[a - coin] + 1)`. We update the current amount only if `dp[a - coin]` is not `INF`. If that holds, we know the remainder is reachable, so we can build `a` by adding one more coin.
 
-
+PS: I didn't write the bottom-up approach myself; I was mostly curious to understand how it works.
